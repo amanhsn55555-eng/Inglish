@@ -411,7 +411,7 @@
             <div class="score-badge">
                 📊 المتوسط: <span id="avgScore">--</span>
             </div>
-            <img id="userAvatarSmall" class="user-icon" src="https://i.pravatar.cc/150?u=default" alt="حسابي" onclick="openAccountPage()" title="إدارة الحساب">
+            <img id="userAvatarSmall" class="user-icon" src="" alt="حسابي" onclick="openAccountPage()" title="إدارة الحساب">
         </div>
     </div>
 
@@ -437,7 +437,7 @@
         <div class="profile-card">
             <button class="btn btn-outline" onclick="closeAccountPage()" style="float: left;">🔙 رجوع</button>
             <h2>إدارة الحساب</h2>
-            <img id="profileAvatar" class="profile-avatar" src="https://i.pravatar.cc/150?u=default" alt="صورة الحساب">
+            <img id="profileAvatar" class="profile-avatar" src="" alt="صورة الحساب">
             <h3 id="profileName">مستخدم</h3>
             <p id="profileEmail">@</p>
             <button class="btn btn-primary" onclick="document.getElementById('avatarUpload').click()">📷 تغيير الصورة</button>
@@ -495,7 +495,7 @@
 
   onAuthStateChanged(auth, async (user) => {
     if (!user) {
-      window.location.href = 'login.html';
+      window.location.href = '';
       return;
     }
     currentUser = user;
