@@ -21,24 +21,23 @@
         * { box-sizing: border-box; margin: 0; padding: 0; }
         
         body {
-            background: #f0f4f8;
+            background: linear-gradient(145deg, #f8fafc, #e2e8f0) !important; border: none !important; box-shadow: inset 2px 2px 5px #ffffff, inset -2px -2px 5px #94a3b8, 3px 3px 8px rgba(0,0,0,0.1), -1px -1px 4px rgba(255,255,255,0.6) !important; border-radius: 30px;
             font-family: 'Segoe UI', Tahoma, sans-serif;
+            background: var(--bg);
             direction: rtl;
             font-size: 18px;
             line-height: 1.6;
-            padding: 20px;
         }
         
         .container {
+            background: linear-gradient(145deg, #f8fafc, #e2e8f0) !important; border: none !important; box-shadow: inset 2px 2px 5px #ffffff, inset -2px -2px 5px #94a3b8, 3px 3px 8px rgba(0,0,0,0.1), -1px -1px 4px rgba(255,255,255,0.6) !important; border-radius: 30px;
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
-            background: #ffffff;
-            border-radius: 30px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
         }
 
         .top-bar {
+            background: linear-gradient(145deg, #f8fafc, #e2e8f0) !important; border: none !important; box-shadow: inset 2px 2px 5px #ffffff, inset -2px -2px 5px #94a3b8, 3px 3px 8px rgba(0,0,0,0.1), -1px -1px 4px rgba(255,255,255,0.6) !important; border-radius: 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -50,12 +49,14 @@
         }
 
         .app-title {
+            background: linear-gradient(145deg, #f8fafc, #e2e8f0) !important; border: none !important; box-shadow: inset 2px 2px 5px #ffffff, inset -2px -2px 5px #94a3b8, 3px 3px 8px rgba(0,0,0,0.1), -1px -1px 4px rgba(255,255,255,0.6) !important; border-radius: 30px;
             font-size: 1.5rem;
             font-weight: 800;
             color: var(--primary);
         }
 
         .user-icon {
+            background: linear-gradient(145deg, #f8fafc, #e2e8f0) !important; border: none !important; box-shadow: inset 2px 2px 5px #ffffff, inset -2px -2px 5px #94a3b8, 3px 3px 8px rgba(0,0,0,0.1), -1px -1px 4px rgba(255,255,255,0.6) !important; border-radius: 30px;
             width: 50px;
             height: 50px;
             border-radius: 50%;
@@ -64,12 +65,14 @@
             border: 3px solid var(--primary);
             transition: transform 0.2s;
         }
-    
+
         .user-icon:hover {
+            background: linear-gradient(145deg, #f8fafc, #e2e8f0) !important; border: none !important; box-shadow: inset 2px 2px 5px #ffffff, inset -2px -2px 5px #94a3b8, 3px 3px 8px rgba(0,0,0,0.1), -1px -1px 4px rgba(255,255,255,0.6) !important; border-radius: 30px;
             transform: scale(1.1);
         }
 
         .score-badge {
+            background: linear-gradient(145deg, #f8fafc, #e2e8f0) !important; border: none !important; box-shadow: inset 2px 2px 5px #ffffff, inset -2px -2px 5px #94a3b8, 3px 3px 8px rgba(0,0,0,0.1), -1px -1px 4px rgba(255,255,255,0.6) !important; border-radius: 30px;
             background: var(--primary-light);
             padding: 14px 24px;
             border-radius: 50px;
@@ -79,6 +82,7 @@
         }
         
         .btn {
+            background: linear-gradient(145deg, #f8fafc, #e2e8f0) !important; border: none !important; box-shadow: inset 2px 2px 5px #ffffff, inset -2px -2px 5px #94a3b8, 3px 3px 8px rgba(0,0,0,0.1), -1px -1px 4px rgba(255,255,255,0.6) !important; border-radius: 30px;
             padding: 14px 28px;
             border: none;
             border-radius: 14px;
@@ -98,6 +102,13 @@
         .btn-primary:hover { filter: brightness(1.15); transform: translateY(-2px); }
         .btn-outline { background: transparent; border: 3px solid var(--primary); color: var(--primary); }
         .btn-outline:hover { background: var(--primary-light); }
+        .btn-danger { background: var(--danger); color: white; }
+        .btn-danger:hover { filter: brightness(1.15); }
+        .btn-success { background: var(--success); color: white; }
+        .btn-warning { background: var(--warning); color: white; }
+        .btn-sm { padding: 10px 20px; font-size: 1rem; }
+        .btn-lg { padding: 16px 32px; font-size: 1.2rem; }
+        .btn-xs { padding: 6px 12px; font-size: 0.9rem; }
         
         h1 { text-align: center; color: var(--text); margin-bottom: 35px; font-size: 2.5rem; font-weight: 800; }
         
@@ -113,10 +124,15 @@
             h1 { font-size: 2rem; }
             .section-top-bar { flex-direction: column; text-align: center; }
             .section-top-bar .title-area { flex-direction: column; }
+            .controls-bar { flex-direction: column; }
+            .search-box { width: 100%; }
             .post-word { font-size: 1.5rem; }
+            .quiz-options { grid-template-columns: 1fr; }
+            .questions-list { grid-template-columns: 1fr; }
         }
         
         .section-card {
+            background: linear-gradient(145deg, #f8fafc, #e2e8f0) !important; border: none !important; box-shadow: inset 2px 2px 5px #ffffff, inset -2px -2px 5px #94a3b8, 3px 3px 8px rgba(0,0,0,0.1), -1px -1px 4px rgba(255,255,255,0.6) !important; border-radius: 30px;
             background: var(--card);
             border-radius: 24px;
             padding: 30px;
@@ -193,7 +209,16 @@
             color: var(--text);
         }
         
+        .controls-bar {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        
         .search-box {
+            background: linear-gradient(145deg, #f8fafc, #e2e8f0) !important; border: none !important; box-shadow: inset 2px 2px 5px #ffffff, inset -2px -2px 5px #94a3b8, 3px 3px 8px rgba(0,0,0,0.1), -1px -1px 4px rgba(255,255,255,0.6) !important; border-radius: 30px;
             flex: 1;
             min-width: 200px;
             padding: 16px 20px;
@@ -209,6 +234,7 @@
         }
         
         .posts-container {
+            background: linear-gradient(145deg, #f8fafc, #e2e8f0) !important; border: none !important; box-shadow: inset 2px 2px 5px #ffffff, inset -2px -2px 5px #94a3b8, 3px 3px 8px rgba(0,0,0,0.1), -1px -1px 4px rgba(255,255,255,0.6) !important; border-radius: 30px;
             display: flex;
             flex-direction: column;
             gap: 20px;
@@ -245,6 +271,7 @@
         
         .speak-btn {
             cursor: pointer;
+            background: linear-gradient(145deg, #f8fafc, #e2e8f0) !important; border: none !important; box-shadow: inset 2px 2px 5px #ffffff, inset -2px -2px 5px #94a3b8, 3px 3px 8px rgba(0,0,0,0.1), -1px -1px 4px rgba(255,255,255,0.6) !important; border-radius: 30px;
             font-size: 1.4rem;
             background: var(--primary-light);
             padding: 12px;
@@ -276,6 +303,7 @@
         }
         
         .post-example-box {
+            background: linear-gradient(145deg, #f8fafc, #e2e8f0) !important; border: none !important; box-shadow: inset 2px 2px 5px #ffffff, inset -2px -2px 5px #94a3b8, 3px 3px 8px rgba(0,0,0,0.1), -1px -1px 4px rgba(255,255,255,0.6) !important; border-radius: 30px;
             background: #f8fafc;
             padding: 20px 25px;
             border-radius: 16px;
@@ -297,11 +325,21 @@
         }
         
         .post-example-trans {
+            background: linear-gradient(145deg, #f8fafc, #e2e8f0) !important; border: none !important; box-shadow: inset 2px 2px 5px #ffffff, inset -2px -2px 5px #94a3b8, 3px 3px 8px rgba(0,0,0,0.1), -1px -1px 4px rgba(255,255,255,0.6) !important; border-radius: 30px;
             font-size: 1.2rem;
             font-weight: 600;
             color: #64748b;
         }
-
+        
+        .post-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+        }
+        
         .font-control {
             display: flex;
             align-items: center;
@@ -346,14 +384,14 @@
             min-width: 40px;
             text-align: center;
         }
-
+        
         .no-posts {
             font-size: 1.5rem;
             color: #94a3b8;
             text-align: center;
             padding: 60px 20px;
         }
-
+        
         .account-page {
             display: none;
         }
@@ -406,12 +444,11 @@
 
 <div class="container">
     <div class="top-bar" id="topBar">
-        <div class="app-title">📚 لوحة الأقسام</div>
         <div style="display: flex; align-items: center; gap: 20px;">
             <div class="score-badge">
                 📊 المتوسط: <span id="avgScore">--</span>
             </div>
-            <img id="userAvatarSmall" class="user-icon" src="" alt="حسابي" onclick="openAccountPage()" title="إدارة الحساب">
+            <img id="userAvatarSmall" class="user-icon" src="https://i.pravatar.cc/150?u=default" alt="حسابي" onclick="openAccountPage()" title="إدارة الحساب">
         </div>
     </div>
 
@@ -429,7 +466,11 @@
             </div>
             <div class="score-badge" id="sectionPageScore"></div>
         </div>
-        <input type="text" class="search-box" placeholder="🔍 بحث في المنشورات..." id="searchInput" oninput="searchPosts()">
+        
+        <div class="controls-bar">
+            <input type="text" class="search-box" placeholder="🔍 بحث في المنشورات..." id="searchInput" oninput="searchPosts()">
+        </div>
+        
         <div class="posts-container" id="postsContainer"></div>
     </div>
 
@@ -437,7 +478,7 @@
         <div class="profile-card">
             <button class="btn btn-outline" onclick="closeAccountPage()" style="float: left;">🔙 رجوع</button>
             <h2>إدارة الحساب</h2>
-            <img id="profileAvatar" class="profile-avatar" src="" alt="صورة الحساب">
+            <img id="profileAvatar" class="profile-avatar" src="https://i.pravatar.cc/150?u=default" alt="صورة الحساب">
             <h3 id="profileName">مستخدم</h3>
             <p id="profileEmail">@</p>
             <button class="btn btn-primary" onclick="document.getElementById('avatarUpload').click()">📷 تغيير الصورة</button>
@@ -450,7 +491,7 @@
             <canvas id="resultsChart" width="400" height="200"></canvas>
             <div style="text-align: center; margin-top: 15px; font-weight: 700;" id="chartLevel"></div>
         </div>
-        <button class="btn btn-outline" onclick="logout()" style="margin-top: 30px; width: 100%; color: var(--danger); border-color: var(--danger);">🚪 تسجيل الخروج</button>
+        <button class="btn btn-danger" onclick="logout()" style="margin-top: 30px; width: 100%;">🚪 تسجيل الخروج</button>
     </div>
 </div>
 
@@ -495,7 +536,7 @@
 
   onAuthStateChanged(auth, async (user) => {
     if (!user) {
-      window.location.href = '';
+      window.location.href = 'login.html';
       return;
     }
     currentUser = user;
@@ -792,11 +833,13 @@
           </div>
           <div class="post-example-trans">🔁 ${escapeHTML(p.exampleTranslation)}</div>
         </div>
-        <div class="font-control" style="margin-top:15px; justify-content:center;">
-          <button onclick="changeFontSize('${postId}', -2)" title="تصغير الخط">A-</button>
-          <input type="range" min="14" max="100" value="18" oninput="setFontSize('${postId}', this.value)" title="حجم الخط">
-          <button onclick="changeFontSize('${postId}', 2)" title="تكبير الخط">A+</button>
-          <span class="font-size-label" id="fontLabel-${postId}">18</span>
+        <div class="post-actions">
+          <div class="font-control">
+            <button onclick="changeFontSize('${postId}', -2)" title="تصغير الخط">A-</button>
+            <input type="range" min="14" max="100" value="18" oninput="setFontSize('${postId}', this.value)" title="حجم الخط">
+            <button onclick="changeFontSize('${postId}', 2)" title="تكبير الخط">A+</button>
+            <span class="font-size-label" id="fontLabel-${postId}">18</span>
+          </div>
         </div>
       `;
       container.appendChild(postDiv);
@@ -828,8 +871,11 @@
       let newSize = parseInt(slider.value) + delta;
       newSize = Math.max(14, Math.min(100, newSize));
       slider.value = newSize;
+      const word1 = post.querySelector('.post-word');
+      const exampleText = post.querySelector('.post-example-text');
+      if (word1) word1.style.fontSize = newSize + 'px';
+      if (exampleText) exampleText.style.fontSize = newSize + 'px';
       if (label) label.textContent = newSize;
-      post.style.fontSize = newSize + 'px';
     }
   };
 
@@ -837,7 +883,10 @@
     const post = document.querySelector(`[data-post-id="${postId}"]`);
     const label = document.getElementById(`fontLabel-${postId}`);
     if (post) {
-      post.style.fontSize = size + 'px';
+      const word1 = post.querySelector('.post-word');
+      const exampleText = post.querySelector('.post-example-text');
+      if (word1) word1.style.fontSize = size + 'px';
+      if (exampleText) exampleText.style.fontSize = size + 'px';
       if (label) label.textContent = size;
     }
   };
@@ -854,19 +903,7 @@
     }
   };
 
-  window.openSection = window.openSection;
-  window.goHome = window.goHome;
-  window.openAccountPage = window.openAccountPage;
-  window.closeAccountPage = window.closeAccountPage;
-  window.editProfileName = window.editProfileName;
-  window.updateAvatar = window.updateAvatar;
-  window.speakWord = window.speakWord;
-  window.changeFontSize = window.changeFontSize;
-  window.setFontSize = window.setFontSize;
-  window.searchPosts = window.searchPosts;
-  window.logout = window.logout;
-
-  console.log('✅ نسخة المشاهدة فقط جاهزة');
+  console.log('✅ تم تحميل نظام المشاهدة فقط بنجاح');
 </script>
 
 </body>
