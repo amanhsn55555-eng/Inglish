@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة الأقسام التعليمية - مشاهدة فقط</title>
+    <style>
+        :root {
+            --bg: #f0f4f8;
+            --card: #fff;
+            --text: #1e293b;
+            --primary: #4f46e5;
+            --primary-light: #eef2ff;
+            --danger: #ef4444;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --border: #e2e8f0;
+            --shadow: 0 4px 20px rgba(0,0,0,0.06);
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            background: #f0f4f8;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            direction: rtl;
+            font-size: 18px;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background: var(--card);
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+        }
+
+        .app-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .user-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            cursor: pointer;
+            border: 3px solid var(--primary);
+            transition: transform 0.2s;
+        }
+    
+        .user-icon:hover {
+            transform: scale(1.1);
+        }
+
+        .score-badge {
+            background: var(--primary-light);
+            padding: 14px 24px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            white-space: nowrap;
+        }
+        
+        .btn {
+            padding: 14px 28px;
+            border: none;
+            border-radius: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 1.1rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            white-space: nowrap;
+            text-decoration: none;
+        }
+        
+        .btn-primary { background: var(--primary); color: white; }
+        .btn-primary:hover { filter: brightness(1.15); transform: translateY(-2px); }
+        .btn-outline { background: transparent; border: 3px solid var(--primary); color: var(--primary); }
+        .btn-outline:hover { background: var(--primary-light); }
+        
+        h1 { text-align: center; color: var(--text); margin-bottom: 35px; font-size: 2.5rem; font-weight: 800; }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+        
+        @media (max-width: 768px) {
+            .grid { grid-template-columns: 1fr; }
+            .container { padding: 15px; }
+            h1 { font-size: 2rem; }
+            .section-top-bar { flex-direction: column; text-align: center; }
+            .section-top-bar .title-area { flex-direction: column; }
+            .post-word { font-size: 1.5rem; }
+        }
+        
+        .section-card {
+            background: var(--card);
+            border-radius: 24px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+            border: 3px solid transparent;
+            cursor: pointer;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .section-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        
+        .section-card img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 20px;
+        }
+        
+        .section-card h3 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text);
+        }
+        
+        .section-score {
+            background: #fef9c3;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+        
+        .section-page { display: none; }
+        .section-page.active { display: block; }
+        
+        .section-top-bar {
+            background: var(--card);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .section-top-bar .title-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .section-top-bar img {
+            width: 65px;
+            height: 65px;
+            border-radius: 16px;
+            object-fit: cover;
+        }
+        
+        .section-top-bar h2 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--text);
+        }
+        
+        .search-box {
+            flex: 1;
+            min-width: 200px;
+            padding: 16px 20px;
+            border: 3px solid var(--border);
+            border-radius: 16px;
+            font-size: 1.1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .search-box:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        .posts-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .post {
+            background: #fff;
+            border-radius: 20px;
+            padding: 30px;
+            border: 2px solid var(--border);
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+        }
+        
+        .post:hover { border-color: #cbd5e1; }
+        
+        .post-words-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .post-word {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .speak-btn {
+            cursor: pointer;
+            font-size: 1.4rem;
+            background: var(--primary-light);
+            padding: 12px;
+            border-radius: 50%;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border: none;
+        }
+        
+        .speak-btn:hover { background: #dbeafe; transform: scale(1.15); }
+        .speak-btn:active { transform: scale(0.95); }
+        
+        .word-separator {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: #94a3b8;
+        }
+        
+        .post-translation {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #475569;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        
+        .post-example-box {
+            background: #f8fafc;
+            padding: 20px 25px;
+            border-radius: 16px;
+            border-right: 6px solid var(--primary);
+            margin: 20px 0;
+            position: relative;
+        }
+        
+        .post-example-text {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .post-example-trans {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #64748b;
+        }
+
+        .font-control {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: #f1f5f9;
+            padding: 12px 20px;
+            border-radius: 50px;
+            border: 2px solid #e2e8f0;
+        }
+        
+        .font-control button {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid #64748b;
+            background: white;
+            font-weight: 900;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+        
+        .font-control button:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        .font-control input[type="range"] {
+            width: 150px;
+            height: 8px;
+            cursor: pointer;
+            accent-color: var(--primary);
+        }
+        
+        .font-size-label {
+            font-weight: 700;
+            font-size: 1rem;
+            min-width: 40px;
+            text-align: center;
+        }
+
+        .no-posts {
+            font-size: 1.5rem;
+            color: #94a3b8;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .account-page {
+            display: none;
+        }
+        .account-page.active {
+            display: block;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .profile-card {
+            background: var(--card);
+            border-radius: 24px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .profile-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .chart-container {
+            background: var(--card);
+            border-radius: 24px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            margin-top: 30px;
+        }
+
+        canvas {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        @media (max-width: 480px) {
+            .post-word { font-size: 1.6rem; }
+            .post-translation { font-size: 1.3rem; }
+            .post-example-text { font-size: 1.1rem; }
+            .font-control input[type="range"] { width: 100px; }
+            .btn { padding: 12px 20px; font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="top-bar" id="topBar">
+        <div class="app-title">📚 لوحة الأقسام</div>
+        <div style="display: flex; align-items: center; gap: 20px;">
+            <div class="score-badge">
+                📊 المتوسط: <span id="avgScore">--</span>
+            </div>
+            <img id="userAvatarSmall" class="user-icon" src="https://i.pravatar.cc/150?u=default" alt="حسابي" onclick="openAccountPage()" title="إدارة الحساب">
+        </div>
+    </div>
+
+    <div id="homePage">
+        <h1>اختر القسم التعليمي</h1>
+        <div class="grid" id="sectionsGrid"></div>
+    </div>
+
+    <div id="sectionPage" class="section-page">
+        <div class="section-top-bar">
+            <button class="btn btn-outline" onclick="goHome()">🔙 رجوع</button>
+            <div class="title-area">
+                <img id="sectionPageImg" src="" alt="">
+                <h2 id="sectionPageTitle"></h2>
+            </div>
+            <div class="score-badge" id="sectionPageScore"></div>
+        </div>
+        <input type="text" class="search-box" placeholder="🔍 بحث في المنشورات..." id="searchInput" oninput="searchPosts()">
+        <div class="posts-container" id="postsContainer"></div>
+    </div>
+
+    <div id="accountPage" class="account-page">
+        <div class="profile-card">
+            <button class="btn btn-outline" onclick="closeAccountPage()" style="float: left;">🔙 رجوع</button>
+            <h2>إدارة الحساب</h2>
+            <img id="profileAvatar" class="profile-avatar" src="https://i.pravatar.cc/150?u=default" alt="صورة الحساب">
+            <h3 id="profileName">مستخدم</h3>
+            <p id="profileEmail">@</p>
+            <button class="btn btn-primary" onclick="document.getElementById('avatarUpload').click()">📷 تغيير الصورة</button>
+            <input type="file" id="avatarUpload" accept="image/*" style="display: none;" onchange="updateAvatar(event)">
+            <button class="btn btn-outline" onclick="editProfileName()" style="margin-right: 10px;">✏️ تعديل الاسم</button>
+        </div>
+
+        <div class="chart-container">
+            <h3 style="text-align: center; margin-bottom: 20px;">📈 تقدم نتائج الاختبارات</h3>
+            <canvas id="resultsChart" width="400" height="200"></canvas>
+            <div style="text-align: center; margin-top: 15px; font-weight: 700;" id="chartLevel"></div>
+        </div>
+        <button class="btn btn-outline" onclick="logout()" style="margin-top: 30px; width: 100%; color: var(--danger); border-color: var(--danger);">🚪 تسجيل الخروج</button>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-app.js";
+  import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-auth.js";
+  import { getFirestore, collection, doc, setDoc, getDoc, getDocs, updateDoc, query, orderBy } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyDjyF_1GkKPR4O1CyhCvU2cRCIMfeCyYOw",
+    authDomain: "eng5-35f2a.firebaseapp.com",
+    projectId: "eng5-35f2a",
+    storageBucket: "eng5-35f2a.firebasestorage.app",
+    messagingSenderId: "721663141041",
+    appId: "1:721663141041:web:8a0737f2f7e29ff7832e90",
+    measurementId: "G-C35CW2XX1F"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db = getFirestore(app);
+
+  const defaultSections = [
+    { id: 'sec1', name: 'الحروف', image: 'https://img.freepik.com/free-vector/english-alphabet-illustration_23-2148721687.jpg' },
+    { id: 'sec2', name: 'الأرقام', image: 'https://img.freepik.com/free-vector/cartoon-numbers-set_23-2147507889.jpg' },
+    { id: 'sec3', name: 'التاريخ', image: 'https://img.freepik.com/free-vector/calendar-icon_23-2147504913.jpg' },
+    { id: 'sec4', name: 'قواعد الحوارات', image: 'https://img.freepik.com/free-vector/conversation-concept-illustration_114360-1605.jpg' },
+    { id: 'sec5', name: 'الصيدلية', image: 'https://img.freepik.com/free-vector/pharmacy-concept-illustration_114360-3398.jpg' },
+    { id: 'sec6', name: 'طلب المساعدة', image: 'https://img.freepik.com/free-vector/help-concept-illustration_114360-2939.jpg' },
+    { id: 'sec7', name: 'السفر', image: 'https://img.freepik.com/free-vector/travel-concept-illustration_114360-1245.jpg' },
+    { id: 'sec8', name: 'التسوق', image: 'https://img.freepik.com/free-vector/shopping-concept-illustration_114360-1576.jpg' },
+    { id: 'sec9', name: 'التواصل', image: 'https://img.freepik.com/free-vector/communication-concept-illustration_114360-2265.jpg' },
+    { id: 'sec10', name: 'الرعاية الإلكترونية', image: 'https://img.freepik.com/free-vector/online-care-concept-illustration_114360-4055.jpg' }
+  ];
+
+  let currentUser = null;
+  let currentSections = [...defaultSections];
+  let currentSectionId = null;
+  let resultsChart = null;
+
+  onAuthStateChanged(auth, async (user) => {
+    if (!user) {
+      window.location.href = 'login.html';
+      return;
+    }
+    currentUser = user;
+    document.getElementById('userAvatarSmall').src = user.photoURL || 'https://i.pravatar.cc/150?u=default';
+    
+    const userRef = doc(db, 'users', currentUser.uid);
+    const userSnap = await getDoc(userRef);
+    if (userSnap.exists()) {
+      const data = userSnap.data();
+      if (data.sections) currentSections = data.sections;
+      if (data.avatar) document.getElementById('userAvatarSmall').src = data.avatar;
+    } else {
+      await setDoc(userRef, {
+        email: currentUser.email,
+        name: currentUser.displayName || 'مستخدم',
+        avatar: currentUser.photoURL || 'https://i.pravatar.cc/150?u=default',
+        sections: defaultSections,
+        createdAt: new Date()
+      });
+    }
+    await updateAverageScore();
+    renderHomeSections();
+  });
+
+  async function updateAverageScore() {
+    let totalScore = 0, count = 0;
+    for (let sec of currentSections) {
+      const q = query(collection(db, 'sections', sec.id, 'quizResults'), orderBy('timestamp', 'desc'));
+      const snap = await getDocs(q);
+      snap.forEach(doc => {
+        totalScore += doc.data().score;
+        count++;
+      });
+    }
+    const avg = count > 0 ? (totalScore / count).toFixed(1) : '--';
+    document.getElementById('avgScore').textContent = avg + '%';
+  }
+
+  async function getSectionScore(sectionId) {
+    const q = query(collection(db, 'sections', sectionId, 'quizResults'), orderBy('timestamp', 'desc'));
+    const snap = await getDocs(q);
+    if (snap.empty) return null;
+    return snap.docs[0].data().score;
+  }
+
+  function scoreLabel(score) {
+    if (score === null || score === undefined) return 'لم يختبر بعد';
+    if (score >= 90) return '🌟 ممتاز';
+    if (score >= 70) return '👍 جيد جداً';
+    if (score >= 50) return '👌 جيد';
+    if (score >= 30) return '⚠️ مقبول';
+    return '❌ سيئ';
+  }
+
+  async function renderHomeSections() {
+    const grid = document.getElementById('sectionsGrid');
+    grid.innerHTML = '';
+    for (let sec of currentSections) {
+      const score = await getSectionScore(sec.id);
+      const card = document.createElement('div');
+      card.className = 'section-card';
+      card.onclick = () => openSection(sec.id);
+      card.innerHTML = `
+        <img src="${sec.image}" alt="${sec.name}" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png'">
+        <h3>${sec.name}</h3>
+        <div class="section-score">${scoreLabel(score)} ${score !== null ? `(${score}%)` : ''}</div>
+      `;
+      grid.appendChild(card);
+    }
+  }
+
+  window.openSection = async (sectionId) => {
+    currentSectionId = sectionId;
+    const sec = currentSections.find(s => s.id === sectionId);
+    
+    document.getElementById('homePage').style.display = 'none';
+    document.getElementById('accountPage').classList.remove('active');
+    
+    const page = document.getElementById('sectionPage');
+    page.classList.add('active');
+    document.getElementById('sectionPageImg').src = sec.image;
+    document.getElementById('sectionPageImg').onerror = function() {
+      this.src = 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png';
+    };
+    document.getElementById('sectionPageTitle').textContent = sec.name;
+    
+    const score = await getSectionScore(sectionId);
+    document.getElementById('sectionPageScore').textContent = `${scoreLabel(score)} ${score !== null ? `(${score}%)` : ''}`;
+    
+    document.getElementById('searchInput').value = '';
+    loadPosts();
+    
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  window.goHome = () => {
+    document.getElementById('sectionPage').classList.remove('active');
+    document.getElementById('accountPage').classList.remove('active');
+    document.getElementById('homePage').style.display = 'block';
+    currentSectionId = null;
+    renderHomeSections();
+    updateAverageScore();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  window.openAccountPage = async () => {
+    document.getElementById('homePage').style.display = 'none';
+    document.getElementById('sectionPage').classList.remove('active');
+    document.getElementById('accountPage').classList.add('active');
+    
+    document.getElementById('profileAvatar').src = currentUser.photoURL || 'https://i.pravatar.cc/150?u=default';
+    document.getElementById('profileName').textContent = currentUser.displayName || 'مستخدم';
+    document.getElementById('profileEmail').textContent = currentUser.email;
+    
+    const userRef = doc(db, 'users', currentUser.uid);
+    const userSnap = await getDoc(userRef);
+    if (userSnap.exists()) {
+      const data = userSnap.data();
+      if (data.avatar) document.getElementById('profileAvatar').src = data.avatar;
+      if (data.name) document.getElementById('profileName').textContent = data.name;
+    }
+    
+    await loadChart();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  window.closeAccountPage = () => {
+    document.getElementById('accountPage').classList.remove('active');
+    document.getElementById('homePage').style.display = 'block';
+    renderHomeSections();
+    updateAverageScore();
+  };
+
+  window.editProfileName = async () => {
+    const newName = prompt('الرجاء إدخال الاسم الجديد:', document.getElementById('profileName').textContent);
+    if (newName && newName.trim()) {
+      try {
+        await updateDoc(doc(db, 'users', currentUser.uid), { name: newName.trim() });
+        document.getElementById('profileName').textContent = newName.trim();
+        alert('✅ تم تحديث الاسم بنجاح');
+      } catch (error) {
+        alert('❌ حدث خطأ: ' + error.message);
+      }
+    }
+  };
+
+  window.updateAvatar = async (event) => {
+    const file = event.target.files[0];
+    if (!file) return;
+    
+    const reader = new FileReader();
+    reader.onload = async (e) => {
+      const base64 = e.target.result;
+      document.getElementById('profileAvatar').src = base64;
+      document.getElementById('userAvatarSmall').src = base64;
+      try {
+        await updateDoc(doc(db, 'users', currentUser.uid), { avatar: base64 });
+        alert('✅ تم تحديث الصورة بنجاح');
+      } catch (error) {
+        alert('❌ حدث خطأ: ' + error.message);
+      }
+    };
+    reader.readAsDataURL(file);
+  };
+
+  async function loadChart() {
+    const allResults = [];
+    for (let sec of currentSections) {
+      const q = query(collection(db, 'sections', sec.id, 'quizResults'), orderBy('timestamp', 'asc'));
+      const snap = await getDocs(q);
+      snap.forEach(doc => {
+        const data = doc.data();
+        allResults.push({
+          section: sec.name,
+          score: data.score,
+          timestamp: data.timestamp?.toDate() || new Date()
+        });
+      });
+    }
+    
+    allResults.sort((a, b) => a.timestamp - b.timestamp);
+    
+    const labels = allResults.map(r => {
+      const d = r.timestamp;
+      return `${d.getDate()}/${d.getMonth()+1}/${d.getFullYear()}`;
+    });
+    const scores = allResults.map(r => r.score);
+    
+    const totalAvg = scores.length > 0 ? (scores.reduce((a,b) => a+b, 0) / scores.length).toFixed(1) : 0;
+    let levelText = '';
+    if (totalAvg >= 90) levelText = '🏆 المستوى المتقدم';
+    else if (totalAvg >= 70) levelText = '🥇 مستوى جيد جداً';
+    else if (totalAvg >= 50) levelText = '🥈 مستوى متوسط';
+    else if (totalAvg >= 30) levelText = '🥉 مستوى مقبول';
+    else levelText = '📚 مستوى مبتدئ';
+    
+    document.getElementById('chartLevel').textContent = `${levelText} - المتوسط العام: ${totalAvg}%`;
+    
+    const ctx = document.getElementById('resultsChart').getContext('2d');
+    if (resultsChart) resultsChart.destroy();
+    
+    if (scores.length === 0) {
+      document.getElementById('chartLevel').textContent = 'لا توجد بيانات اختبارات بعد';
+      return;
+    }
+    
+    resultsChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: 'نتيجة الاختبار (%)',
+          data: scores,
+          borderColor: '#4f46e5',
+          backgroundColor: 'rgba(79, 70, 229, 0.1)',
+          borderWidth: 3,
+          pointBackgroundColor: '#4f46e5',
+          pointRadius: 6,
+          pointHoverRadius: 8,
+          fill: true,
+          tension: 0.4
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { display: true, labels: { font: { size: 14 } } }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            max: 100,
+            ticks: { callback: value => value + '%' }
+          }
+        }
+      }
+    });
+  }
+
+  function escapeHTML(str) {
+    if (!str) return '';
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
+  function escapeQuotes(str) {
+    if (!str) return '';
+    return str.replace(/'/g, "\\'").replace(/"/g, '&quot;');
+  }
+
+  async function loadPosts(searchTerm = '') {
+    const container = document.getElementById('postsContainer');
+    container.innerHTML = '<p class="no-posts">⏳ جاري التحميل...</p>';
+    
+    const q = query(collection(db, 'sections', currentSectionId, 'posts'), orderBy('createdAt', 'desc'));
+    const snap = await getDocs(q);
+    container.innerHTML = '';
+    
+    if (snap.empty) {
+      container.innerHTML = '<p class="no-posts">📭 لا توجد منشورات بعد.</p>';
+      return;
+    }
+    
+    let hasResults = false;
+    snap.forEach(docSnap => {
+      const p = docSnap.data();
+      if (searchTerm && !`${p.word1} ${p.word2} ${p.translation} ${p.example}`.toLowerCase().includes(searchTerm.toLowerCase())) return;
+      
+      hasResults = true;
+      const postId = docSnap.id;
+      const postDiv = document.createElement('div');
+      postDiv.className = 'post';
+      postDiv.setAttribute('data-post-id', postId);
+      postDiv.style.fontSize = '18px';
+      
+      postDiv.innerHTML = `
+        <div class="post-words-row">
+          <div class="post-word">
+            ${escapeHTML(p.word1)}
+            <button class="speak-btn" onclick="event.stopPropagation(); speakWord('${escapeQuotes(p.word1)}')" title="استمع للكلمة">🔊</button>
+          </div>
+          <span class="word-separator">/</span>
+          <div class="post-word">
+            ${escapeHTML(p.word2)}
+            <button class="speak-btn" onclick="event.stopPropagation(); speakWord('${escapeQuotes(p.word2)}')" title="استمع للكلمة">🔊</button>
+          </div>
+        </div>
+        <div class="post-translation">📖 ${escapeHTML(p.translation)}</div>
+        <div class="post-example-box">
+          <div class="post-example-text">
+            <span>💬 ${escapeHTML(p.example)}</span>
+            <button class="speak-btn" onclick="event.stopPropagation(); speakWord('${escapeQuotes(p.example)}')" title="استمع للمثال" style="width:40px;height:40px;font-size:1.1rem;">🔊</button>
+          </div>
+          <div class="post-example-trans">🔁 ${escapeHTML(p.exampleTranslation)}</div>
+        </div>
+        <div class="font-control" style="margin-top:15px; justify-content:center;">
+          <button onclick="changeFontSize('${postId}', -2)" title="تصغير الخط">A-</button>
+          <input type="range" min="14" max="100" value="18" oninput="setFontSize('${postId}', this.value)" title="حجم الخط">
+          <button onclick="changeFontSize('${postId}', 2)" title="تكبير الخط">A+</button>
+          <span class="font-size-label" id="fontLabel-${postId}">18</span>
+        </div>
+      `;
+      container.appendChild(postDiv);
+    });
+    
+    if (!hasResults && searchTerm) {
+      container.innerHTML = '<p class="no-posts">🔍 لا توجد نتائج تطابق بحثك.</p>';
+    }
+  }
+
+  window.speakWord = (text) => {
+    if ('speechSynthesis' in window) {
+      speechSynthesis.cancel();
+      const utter = new SpeechSynthesisUtterance(text);
+      utter.lang = 'en-US';
+      utter.rate = 0.85;
+      utter.pitch = 1;
+      utter.volume = 1;
+      speechSynthesis.speak(utter);
+    }
+  };
+
+  window.changeFontSize = (postId, delta) => {
+    const post = document.querySelector(`[data-post-id="${postId}"]`);
+    const label = document.getElementById(`fontLabel-${postId}`);
+    const slider = post?.querySelector('input[type="range"]');
+    
+    if (post && slider) {
+      let newSize = parseInt(slider.value) + delta;
+      newSize = Math.max(14, Math.min(100, newSize));
+      slider.value = newSize;
+      if (label) label.textContent = newSize;
+      post.style.fontSize = newSize + 'px';
+    }
+  };
+
+  window.setFontSize = (postId, size) => {
+    const post = document.querySelector(`[data-post-id="${postId}"]`);
+    const label = document.getElementById(`fontLabel-${postId}`);
+    if (post) {
+      post.style.fontSize = size + 'px';
+      if (label) label.textContent = size;
+    }
+  };
+
+  window.searchPosts = () => {
+    const term = document.getElementById('searchInput').value;
+    loadPosts(term);
+  };
+
+  window.logout = async () => {
+    if (confirm('هل أنت متأكد من تسجيل الخروج؟')) {
+      await signOut(auth);
+      window.location.href = 'login.html';
+    }
+  };
+
+  window.openSection = window.openSection;
+  window.goHome = window.goHome;
+  window.openAccountPage = window.openAccountPage;
+  window.closeAccountPage = window.closeAccountPage;
+  window.editProfileName = window.editProfileName;
+  window.updateAvatar = window.updateAvatar;
+  window.speakWord = window.speakWord;
+  window.changeFontSize = window.changeFontSize;
+  window.setFontSize = window.setFontSize;
+  window.searchPosts = window.searchPosts;
+  window.logout = window.logout;
+
+  console.log('✅ نسخة المشاهدة فقط جاهزة');
+</script>
+
+</body>
+</html>
