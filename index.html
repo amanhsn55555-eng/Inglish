@@ -7,56 +7,72 @@
     <style>
         :root {
             --bg: #f0f4f8;
-            --card: #fff;
+            --bg2: #e2e8f0;
+            --card: #ffffff;
             --text: #1e293b;
             --primary: #4f46e5;
             --primary-light: #eef2ff;
-            --danger: #ef4444;
-            --success: #10b981;
-            --warning: #f59e0b;
             --border: #e2e8f0;
-            --shadow: 0 4px 20px rgba(0,0,0,0.06);
+            --shadow-light: #ffffff;
+            --shadow-dark: #94a3b8;
+            --radius: 20px;
+            --example-bg: #f8fafc;
+            --example-border: #4f46e5;
+            --score-bg: #fef9c3;
+            --font-control-bg: #f1f5f9;
+            --speak-btn-bg: #eef2ff;
+            --speak-btn-hover: #dbeafe;
+            --option-hover-bg: #f1f5f9;
+            --correct-bg: #d1fae5;
+            --wrong-bg: #fee2e2;
+            --overlay-bg: rgba(0,0,0,0.6);
+            --modal-bg: #ffffff;
+            --separator-color: #94a3b8;
+            --translation-color: #475569;
+            --word-color: #4f46e5;
         }
         
         * { box-sizing: border-box; margin: 0; padding: 0; }
         
         body {
-            background: linear-gradient(145deg, #f8fafc, #e2e8f0) !important; border: none !important; box-shadow: inset 2px 2px 5px #ffffff, inset -2px -2px 5px #94a3b8, 3px 3px 8px rgba(0,0,0,0.1), -1px -1px 4px rgba(255,255,255,0.6) !important; border-radius: 30px;
+            background: linear-gradient(145deg, var(--bg), var(--bg2)) !important;
+            border: none !important;
+            box-shadow: inset 2px 2px 5px var(--shadow-light), inset -2px -2px 5px var(--shadow-dark), 3px 3px 8px rgba(0,0,0,0.1), -1px -1px 4px rgba(255,255,255,0.6) !important;
+            border-radius: 30px;
             font-family: 'Segoe UI', Tahoma, sans-serif;
-            background: var(--bg);
             direction: rtl;
             font-size: 18px;
             line-height: 1.6;
+            color: var(--text);
         }
         
         .container {
-            background: linear-gradient(145deg, #f8fafc, #e2e8f0) !important; border: none !important; box-shadow: inset 2px 2px 5px #ffffff, inset -2px -2px 5px #94a3b8, 3px 3px 8px rgba(0,0,0,0.1), -1px -1px 4px rgba(255,255,255,0.6) !important; border-radius: 30px;
+            background: linear-gradient(145deg, var(--bg), var(--bg2)) !important;
+            border: none !important;
+            box-shadow: inset 2px 2px 5px var(--shadow-light), inset -2px -2px 5px var(--shadow-dark), 3px 3px 8px rgba(0,0,0,0.1), -1px -1px 4px rgba(255,255,255,0.6) !important;
+            border-radius: 30px;
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
         }
 
         .top-bar {
-            background: linear-gradient(145deg, #f8fafc, #e2e8f0) !important; border: none !important; box-shadow: inset 2px 2px 5px #ffffff, inset -2px -2px 5px #94a3b8, 3px 3px 8px rgba(0,0,0,0.1), -1px -1px 4px rgba(255,255,255,0.6) !important; border-radius: 30px;
+            background: linear-gradient(145deg, var(--bg), var(--bg2)) !important;
+            border: none !important;
+            box-shadow: inset 2px 2px 5px var(--shadow-light), inset -2px -2px 5px var(--shadow-dark), 3px 3px 8px rgba(0,0,0,0.1), -1px -1px 4px rgba(255,255,255,0.6) !important;
+            border-radius: 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 10px 20px;
-            background: var(--card);
-            border-radius: 20px;
             margin-bottom: 30px;
-            box-shadow: var(--shadow);
-        }
-
-        .app-title {
-            background: linear-gradient(145deg, #f8fafc, #e2e8f0) !important; border: none !important; box-shadow: inset 2px 2px 5px #ffffff, inset -2px -2px 5px #94a3b8, 3px 3px 8px rgba(0,0,0,0.1), -1px -1px 4px rgba(255,255,255,0.6) !important; border-radius: 30px;
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--primary);
         }
 
         .user-icon {
-            background: linear-gradient(145deg, #f8fafc, #e2e8f0) !important; border: none !important; box-shadow: inset 2px 2px 5px #ffffff, inset -2px -2px 5px #94a3b8, 3px 3px 8px rgba(0,0,0,0.1), -1px -1px 4px rgba(255,255,255,0.6) !important; border-radius: 30px;
+            background: linear-gradient(145deg, var(--bg), var(--bg2)) !important;
+            border: none !important;
+            box-shadow: inset 2px 2px 5px var(--shadow-light), inset -2px -2px 5px var(--shadow-dark), 3px 3px 8px rgba(0,0,0,0.1), -1px -1px 4px rgba(255,255,255,0.6) !important;
+            border-radius: 30px;
             width: 50px;
             height: 50px;
             border-radius: 50%;
@@ -66,23 +82,22 @@
             transition: transform 0.2s;
         }
 
-        .user-icon:hover {
-            background: linear-gradient(145deg, #f8fafc, #e2e8f0) !important; border: none !important; box-shadow: inset 2px 2px 5px #ffffff, inset -2px -2px 5px #94a3b8, 3px 3px 8px rgba(0,0,0,0.1), -1px -1px 4px rgba(255,255,255,0.6) !important; border-radius: 30px;
-            transform: scale(1.1);
-        }
+        .user-icon:hover { transform: scale(1.1); }
 
         .score-badge {
-            background: linear-gradient(145deg, #f8fafc, #e2e8f0) !important; border: none !important; box-shadow: inset 2px 2px 5px #ffffff, inset -2px -2px 5px #94a3b8, 3px 3px 8px rgba(0,0,0,0.1), -1px -1px 4px rgba(255,255,255,0.6) !important; border-radius: 30px;
-            background: var(--primary-light);
+            background: linear-gradient(145deg, var(--score-bg), color-mix(in srgb, var(--score-bg) 80%, #d97706)) !important;
+            border: none !important;
+            box-shadow: inset 2px 2px 5px var(--shadow-light), inset -2px -2px 5px var(--shadow-dark), 3px 3px 8px rgba(0,0,0,0.1), -1px -1px 4px rgba(255,255,255,0.6) !important;
+            border-radius: 30px;
             padding: 14px 24px;
             border-radius: 50px;
             font-weight: 700;
             font-size: 1.1rem;
             white-space: nowrap;
+            color: var(--text);
         }
         
         .btn {
-            background: linear-gradient(145deg, #f8fafc, #e2e8f0) !important; border: none !important; box-shadow: inset 2px 2px 5px #ffffff, inset -2px -2px 5px #94a3b8, 3px 3px 8px rgba(0,0,0,0.1), -1px -1px 4px rgba(255,255,255,0.6) !important; border-radius: 30px;
             padding: 14px 28px;
             border: none;
             border-radius: 14px;
@@ -102,15 +117,12 @@
         .btn-primary:hover { filter: brightness(1.15); transform: translateY(-2px); }
         .btn-outline { background: transparent; border: 3px solid var(--primary); color: var(--primary); }
         .btn-outline:hover { background: var(--primary-light); }
-        .btn-danger { background: var(--danger); color: white; }
+        .btn-danger { background: #ef4444; color: white; }
         .btn-danger:hover { filter: brightness(1.15); }
-        .btn-success { background: var(--success); color: white; }
-        .btn-warning { background: var(--warning); color: white; }
         .btn-sm { padding: 10px 20px; font-size: 1rem; }
         .btn-lg { padding: 16px 32px; font-size: 1.2rem; }
-        .btn-xs { padding: 6px 12px; font-size: 0.9rem; }
         
-        h1 { text-align: center; color: var(--text); margin-bottom: 35px; font-size: 2.5rem; font-weight: 800; }
+        h1 { text-align: center; margin-bottom: 35px; font-size: 2.5rem; font-weight: 800; color: var(--text); }
         
         .grid {
             display: grid;
@@ -131,11 +143,11 @@
         }
         
         .section-card {
-            background: linear-gradient(145deg, #f8fafc, #e2e8f0) !important; border: none !important; box-shadow: inset 2px 2px 5px #ffffff, inset -2px -2px 5px #94a3b8, 3px 3px 8px rgba(0,0,0,0.1), -1px -1px 4px rgba(255,255,255,0.6) !important; border-radius: 30px;
-            background: var(--card);
-            border-radius: 24px;
+            background: linear-gradient(145deg, var(--card), color-mix(in srgb, var(--card) 90%, #94a3b8)) !important;
+            border: none !important;
+            box-shadow: inset 2px 2px 5px var(--shadow-light), inset -2px -2px 5px var(--shadow-dark), 3px 3px 8px rgba(0,0,0,0.1), -1px -1px 4px rgba(255,255,255,0.6) !important;
+            border-radius: 30px;
             padding: 30px;
-            box-shadow: var(--shadow);
             transition: all 0.3s;
             border: 3px solid transparent;
             cursor: pointer;
@@ -152,36 +164,31 @@
             box-shadow: 0 8px 25px rgba(0,0,0,0.1);
         }
         
-        .section-card img {
-            width: 80px;
-            height: 80px;
-            object-fit: cover;
-            border-radius: 20px;
-        }
-        
-        .section-card h3 {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--text);
-        }
+        .section-card img { width: 80px; height: 80px; object-fit: cover; border-radius: 20px; }
+        .section-card h3 { font-size: 1.5rem; font-weight: 800; color: var(--text); }
         
         .section-score {
-            background: #fef9c3;
+            background: linear-gradient(145deg, var(--score-bg), color-mix(in srgb, var(--score-bg) 80%, #d97706)) !important;
+            border: none !important;
+            box-shadow: inset 2px 2px 5px var(--shadow-light), inset -2px -2px 5px var(--shadow-dark), 3px 3px 8px rgba(0,0,0,0.1), -1px -1px 4px rgba(255,255,255,0.6) !important;
+            border-radius: 30px;
             padding: 10px 25px;
             border-radius: 50px;
             font-size: 1.1rem;
             font-weight: 700;
+            color: var(--text);
         }
         
         .section-page { display: none; }
         .section-page.active { display: block; }
         
         .section-top-bar {
-            background: var(--card);
-            border-radius: 20px;
+            background: linear-gradient(145deg, var(--card), color-mix(in srgb, var(--card) 90%, #94a3b8)) !important;
+            border: none !important;
+            box-shadow: inset 2px 2px 5px var(--shadow-light), inset -2px -2px 5px var(--shadow-dark), 3px 3px 8px rgba(0,0,0,0.1), -1px -1px 4px rgba(255,255,255,0.6) !important;
+            border-radius: 30px;
             padding: 25px;
             margin-bottom: 25px;
-            box-shadow: var(--shadow);
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -189,24 +196,9 @@
             gap: 20px;
         }
         
-        .section-top-bar .title-area {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        
-        .section-top-bar img {
-            width: 65px;
-            height: 65px;
-            border-radius: 16px;
-            object-fit: cover;
-        }
-        
-        .section-top-bar h2 {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--text);
-        }
+        .section-top-bar .title-area { display: flex; align-items: center; gap: 15px; }
+        .section-top-bar img { width: 65px; height: 65px; border-radius: 16px; object-fit: cover; }
+        .section-top-bar h2 { font-size: 1.8rem; font-weight: 800; color: var(--text); }
         
         .controls-bar {
             display: flex;
@@ -217,34 +209,27 @@
         }
         
         .search-box {
-            background: linear-gradient(145deg, #f8fafc, #e2e8f0) !important; border: none !important; box-shadow: inset 2px 2px 5px #ffffff, inset -2px -2px 5px #94a3b8, 3px 3px 8px rgba(0,0,0,0.1), -1px -1px 4px rgba(255,255,255,0.6) !important; border-radius: 30px;
+            background: linear-gradient(145deg, var(--card), color-mix(in srgb, var(--card) 90%, #94a3b8)) !important;
+            border: none !important;
+            box-shadow: inset 2px 2px 5px var(--shadow-light), inset -2px -2px 5px var(--shadow-dark), 3px 3px 8px rgba(0,0,0,0.1), -1px -1px 4px rgba(255,255,255,0.6) !important;
+            border-radius: 30px;
             flex: 1;
             min-width: 200px;
             padding: 16px 20px;
-            border: 3px solid var(--border);
-            border-radius: 16px;
             font-size: 1.1rem;
-            transition: border-color 0.3s;
+            color: var(--text);
         }
         
-        .search-box:focus {
-            outline: none;
-            border-color: var(--primary);
-        }
+        .search-box:focus { outline: none; }
         
-        .posts-container {
-            background: linear-gradient(145deg, #f8fafc, #e2e8f0) !important; border: none !important; box-shadow: inset 2px 2px 5px #ffffff, inset -2px -2px 5px #94a3b8, 3px 3px 8px rgba(0,0,0,0.1), -1px -1px 4px rgba(255,255,255,0.6) !important; border-radius: 30px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
+        .posts-container { display: flex; flex-direction: column; gap: 20px; }
         
         .post {
-            background: #fff;
-            border-radius: 20px;
+            background: linear-gradient(145deg, var(--card), color-mix(in srgb, var(--card) 90%, #94a3b8)) !important;
+            border: none !important;
+            box-shadow: inset 2px 2px 5px var(--shadow-light), inset -2px -2px 5px var(--shadow-dark), 3px 3px 8px rgba(0,0,0,0.1), -1px -1px 4px rgba(255,255,255,0.6) !important;
+            border-radius: 30px;
             padding: 30px;
-            border: 2px solid var(--border);
-            box-shadow: var(--shadow);
             transition: all 0.3s;
         }
         
@@ -262,7 +247,7 @@
         .post-word {
             font-size: 2.2rem;
             font-weight: 900;
-            color: var(--primary);
+            color: var(--word-color);
             display: flex;
             align-items: center;
             gap: 12px;
@@ -270,9 +255,11 @@
         
         .speak-btn {
             cursor: pointer;
-            background: linear-gradient(145deg, #f8fafc, #e2e8f0) !important; border: none !important; box-shadow: inset 2px 2px 5px #ffffff, inset -2px -2px 5px #94a3b8, 3px 3px 8px rgba(0,0,0,0.1), -1px -1px 4px rgba(255,255,255,0.6) !important; border-radius: 30px;
             font-size: 1.4rem;
-            background: var(--primary-light);
+            background: linear-gradient(145deg, var(--speak-btn-bg), color-mix(in srgb, var(--speak-btn-bg) 80%, #94a3b8)) !important;
+            border: none !important;
+            box-shadow: inset 2px 2px 5px var(--shadow-light), inset -2px -2px 5px var(--shadow-dark), 3px 3px 8px rgba(0,0,0,0.1), -1px -1px 4px rgba(255,255,255,0.6) !important;
+            border-radius: 30px;
             padding: 12px;
             border-radius: 50%;
             transition: all 0.2s;
@@ -281,40 +268,35 @@
             justify-content: center;
             width: 50px;
             height: 50px;
-            border: none;
         }
         
-        .speak-btn:hover { background: #dbeafe; transform: scale(1.15); }
+        .speak-btn:hover { background: var(--speak-btn-hover); transform: scale(1.15); }
         .speak-btn:active { transform: scale(0.95); }
         
-        .word-separator {
-            font-size: 2.2rem;
-            font-weight: 900;
-            color: #94a3b8;
-        }
+        .word-separator { font-size: 2.2rem; font-weight: 900; color: var(--separator-color); }
         
         .post-translation {
             font-size: 1.5rem;
             font-weight: 700;
-            color: #475569;
+            color: var(--translation-color);
             text-align: center;
             margin-bottom: 15px;
         }
         
         .post-example-box {
-            background: linear-gradient(145deg, #f8fafc, #e2e8f0) !important; border: none !important; box-shadow: inset 2px 2px 5px #ffffff, inset -2px -2px 5px #94a3b8, 3px 3px 8px rgba(0,0,0,0.1), -1px -1px 4px rgba(255,255,255,0.6) !important; border-radius: 30px;
-            background: #f8fafc;
+            background: linear-gradient(145deg, var(--example-bg), color-mix(in srgb, var(--example-bg) 80%, #94a3b8)) !important;
+            border: none !important;
+            box-shadow: inset 2px 2px 5px var(--shadow-light), inset -2px -2px 5px var(--shadow-dark), 3px 3px 8px rgba(0,0,0,0.1), -1px -1px 4px rgba(255,255,255,0.6) !important;
+            border-radius: 30px;
             padding: 20px 25px;
-            border-radius: 16px;
-            border-right: 6px solid var(--primary);
+            border-right: 6px solid var(--example-border);
             margin: 20px 0;
-            position: relative;
         }
         
         .post-example-text {
             font-size: 1.3rem;
             font-weight: 700;
-            color: #1e293b;
+            color: var(--text);
             margin-bottom: 8px;
             display: flex;
             align-items: center;
@@ -323,12 +305,7 @@
             flex-wrap: wrap;
         }
         
-        .post-example-trans {
-            background: linear-gradient(145deg, #f8fafc, #e2e8f0) !important; border: none !important; box-shadow: inset 2px 2px 5px #ffffff, inset -2px -2px 5px #94a3b8, 3px 3px 8px rgba(0,0,0,0.1), -1px -1px 4px rgba(255,255,255,0.6) !important; border-radius: 30px;
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: #64748b;
-        }
+        .post-example-trans { font-size: 1.2rem; font-weight: 600; color: var(--translation-color); }
         
         .post-actions {
             display: flex;
@@ -343,10 +320,12 @@
             display: flex;
             align-items: center;
             gap: 15px;
-            background: #f1f5f9;
+            background: linear-gradient(145deg, var(--font-control-bg), color-mix(in srgb, var(--font-control-bg) 80%, #94a3b8)) !important;
+            border: none !important;
+            box-shadow: inset 2px 2px 5px var(--shadow-light), inset -2px -2px 5px var(--shadow-dark), 3px 3px 8px rgba(0,0,0,0.1), -1px -1px 4px rgba(255,255,255,0.6) !important;
+            border-radius: 30px;
             padding: 12px 20px;
             border-radius: 50px;
-            border: 2px solid #e2e8f0;
         }
         
         .font-control button {
@@ -364,25 +343,9 @@
             transition: all 0.2s;
         }
         
-        .font-control button:hover {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
-        }
-        
-        .font-control input[type="range"] {
-            width: 150px;
-            height: 8px;
-            cursor: pointer;
-            accent-color: var(--primary);
-        }
-        
-        .font-size-label {
-            font-weight: 700;
-            font-size: 1rem;
-            min-width: 40px;
-            text-align: center;
-        }
+        .font-control button:hover { background: var(--primary); color: white; border-color: var(--primary); }
+        .font-control input[type="range"] { width: 150px; height: 8px; cursor: pointer; accent-color: var(--primary); }
+        .font-size-label { font-weight: 700; font-size: 1rem; min-width: 40px; text-align: center; }
         
         .quiz-modal {
             position: fixed;
@@ -390,47 +353,33 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.6);
+            background: var(--overlay-bg);
             display: flex;
             align-items: center;
             justify-content: center;
-            z-index: 1000;
+            z-index: 1001;
             padding: 20px;
         }
         
         .quiz-content {
-            background: white;
-            border-radius: 28px;
+            background: linear-gradient(145deg, var(--modal-bg), color-mix(in srgb, var(--modal-bg) 90%, #94a3b8)) !important;
+            border: none !important;
+            box-shadow: inset 2px 2px 5px var(--shadow-light), inset -2px -2px 5px var(--shadow-dark), 3px 3px 8px rgba(0,0,0,0.1), -1px -1px 4px rgba(255,255,255,0.6) !important;
+            border-radius: 30px;
             padding: 35px;
             width: 100%;
             max-width: 750px;
             max-height: 90vh;
             overflow-y: auto;
             font-size: 1.3rem;
+            color: var(--text);
         }
         
-        .quiz-content h3 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            text-align: center;
-        }
+        .quiz-content h3 { font-size: 1.8rem; margin-bottom: 20px; text-align: center; }
+        .quiz-question { font-size: 1.6rem; font-weight: 800; margin-bottom: 25px; text-align: center; }
+        .quiz-options { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
         
-        .quiz-question {
-            font-size: 1.6rem;
-            font-weight: 800;
-            margin-bottom: 25px;
-            text-align: center;
-        }
-        
-        .quiz-options {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-        }
-        
-        @media (max-width: 500px) {
-            .quiz-options { grid-template-columns: 1fr; }
-        }
+        @media (max-width: 500px) { .quiz-options { grid-template-columns: 1fr; } }
         
         .quiz-option {
             padding: 20px;
@@ -441,99 +390,102 @@
             font-size: 1.2rem;
             transition: all 0.2s;
             text-align: center;
+            background: linear-gradient(145deg, var(--card), color-mix(in srgb, var(--card) 90%, #94a3b8)) !important;
+            border: none !important;
+            box-shadow: inset 2px 2px 5px var(--shadow-light), inset -2px -2px 5px var(--shadow-dark), 3px 3px 8px rgba(0,0,0,0.1), -1px -1px 4px rgba(255,255,255,0.6) !important;
+            border-radius: 30px;
+            color: var(--text);
         }
         
-        .quiz-option:hover {
-            background: #f1f5f9;
-            border-color: var(--primary);
-        }
+        .quiz-option:hover { background: var(--option-hover-bg); }
+        .quiz-option.correct { background: var(--correct-bg) !important; }
+        .quiz-option.wrong { background: var(--wrong-bg) !important; }
         
-        .quiz-option.correct {
-            border-color: var(--success);
-            background: #d1fae5;
-        }
-        
-        .quiz-option.wrong {
-            border-color: var(--danger);
-            background: #fee2e2;
-        }
-        
-        .quiz-media {
-            max-width: 100%;
-            max-height: 300px;
-            border-radius: 16px;
-            margin-bottom: 20px;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .no-posts {
-            font-size: 1.5rem;
-            color: #94a3b8;
-            text-align: center;
-            padding: 60px 20px;
-        }
-        
-        .youtube-container {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            max-width: 100%;
-            border-radius: 16px;
-            margin-bottom: 20px;
-        }
-        
-        .youtube-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border-radius: 16px;
-        }
-        
+        .quiz-media { max-width: 100%; max-height: 300px; border-radius: 16px; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto; }
+        .no-posts { font-size: 1.5rem; color: #94a3b8; text-align: center; padding: 60px 20px; }
         .hidden { display: none !important; }
 
-        .account-page {
+        .color-panel {
+            position: fixed;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            background: linear-gradient(145deg, var(--card), color-mix(in srgb, var(--card) 90%, #94a3b8)) !important;
+            border: none !important;
+            box-shadow: inset 2px 2px 5px var(--shadow-light), inset -2px -2px 5px var(--shadow-dark), 3px 3px 8px rgba(0,0,0,0.2), -1px -1px 4px rgba(255,255,255,0.6) !important;
+            border-radius: 30px;
+            padding: 20px;
+            z-index: 999;
+            width: 280px;
+            max-height: 80vh;
+            overflow-y: auto;
             display: none;
         }
-        .account-page.active {
-            display: block;
-            max-width: 800px;
-            margin: 0 auto;
+        
+        .color-panel.open { display: block; }
+        
+        .color-panel h3 { text-align: center; margin-bottom: 15px; font-size: 1.3rem; color: var(--text); }
+        
+        .color-panel label { display: block; font-weight: 700; margin-top: 12px; font-size: 0.95rem; color: var(--text); }
+        
+        .color-panel input[type="color"] {
+            width: 100%;
+            height: 40px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 5px;
+            padding: 3px;
         }
+        
+        .color-toggle-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, var(--primary), color-mix(in srgb, var(--primary) 80%, #1e3a5f)) !important;
+            border: none !important;
+            box-shadow: inset 2px 2px 5px rgba(255,255,255,0.3), inset -2px -2px 5px rgba(0,0,0,0.2), 3px 3px 8px rgba(0,0,0,0.3), -1px -1px 4px rgba(255,255,255,0.3) !important;
+            border-radius: 30px;
+            color: white;
+            cursor: pointer;
+            font-size: 1.5rem;
+            z-index: 998;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .color-toggle-btn:hover { transform: scale(1.1); }
+        .color-panel .btn { margin-top: 10px; width: 100%; font-size: 0.9rem; }
 
+        .account-page { display: none; max-width: 800px; margin: 0 auto; }
+        .account-page.active { display: block; }
+        
         .profile-card {
-            background: var(--card);
-            border-radius: 24px;
+            background: linear-gradient(145deg, var(--card), color-mix(in srgb, var(--card) 90%, #94a3b8)) !important;
+            border: none !important;
+            box-shadow: inset 2px 2px 5px var(--shadow-light), inset -2px -2px 5px var(--shadow-dark), 3px 3px 8px rgba(0,0,0,0.1), -1px -1px 4px rgba(255,255,255,0.6) !important;
+            border-radius: 30px;
             padding: 30px;
-            box-shadow: var(--shadow);
             text-align: center;
         }
-
-        .profile-avatar {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 5px solid var(--primary);
-            margin-bottom: 20px;
-        }
-
+        
+        .profile-avatar { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 5px solid var(--primary); margin-bottom: 20px; }
+        
         .chart-container {
-            background: var(--card);
-            border-radius: 24px;
+            background: linear-gradient(145deg, var(--card), color-mix(in srgb, var(--card) 90%, #94a3b8)) !important;
+            border: none !important;
+            box-shadow: inset 2px 2px 5px var(--shadow-light), inset -2px -2px 5px var(--shadow-dark), 3px 3px 8px rgba(0,0,0,0.1), -1px -1px 4px rgba(255,255,255,0.6) !important;
+            border-radius: 30px;
             padding: 30px;
-            box-shadow: var(--shadow);
             margin-top: 30px;
         }
-
-        canvas {
-            max-width: 100%;
-            height: auto;
-        }
+        
+        canvas { max-width: 100%; height: auto; }
         
         @media (max-width: 480px) {
             .post-word { font-size: 1.6rem; }
@@ -541,17 +493,88 @@
             .post-example-text { font-size: 1.1rem; }
             .font-control input[type="range"] { width: 100px; }
             .btn { padding: 12px 20px; font-size: 1rem; }
+            .color-panel { width: 250px; right: 5px; }
         }
     </style>
 </head>
 <body>
 
+<button class="color-toggle-btn" onclick="toggleColorPanel()" title="تخصيص الألوان">🎨</button>
+
+<div class="color-panel" id="colorPanel">
+    <h3>🎨 لوحة تخصيص الألوان</h3>
+    
+    <label>لون الخلفية 1 (bg)</label>
+    <input type="color" id="colorBg" value="#f0f4f8" onchange="updateColors()">
+    
+    <label>لون الخلفية 2 (bg2)</label>
+    <input type="color" id="colorBg2" value="#e2e8f0" onchange="updateColors()">
+    
+    <label>لون البطاقات</label>
+    <input type="color" id="colorCard" value="#ffffff" onchange="updateColors()">
+    
+    <label>لون النصوص</label>
+    <input type="color" id="colorText" value="#1e293b" onchange="updateColors()">
+    
+    <label>اللون الرئيسي</label>
+    <input type="color" id="colorPrimary" value="#4f46e5" onchange="updateColors()">
+    
+    <label>لون خلفية الرئيسي الفاتح</label>
+    <input type="color" id="colorPrimaryLight" value="#eef2ff" onchange="updateColors()">
+    
+    <label>لون الظل الفاتح</label>
+    <input type="color" id="colorShadowLight" value="#ffffff" onchange="updateColors()">
+    
+    <label>لون الظل الداكن</label>
+    <input type="color" id="colorShadowDark" value="#94a3b8" onchange="updateColors()">
+    
+    <label>لون خلفية المثال</label>
+    <input type="color" id="colorExampleBg" value="#f8fafc" onchange="updateColors()">
+    
+    <label>لون حدود المثال</label>
+    <input type="color" id="colorExampleBorder" value="#4f46e5" onchange="updateColors()">
+    
+    <label>لون خلفية النتيجة</label>
+    <input type="color" id="colorScoreBg" value="#fef9c3" onchange="updateColors()">
+    
+    <label>لون خلفية التحكم بالخط</label>
+    <input type="color" id="colorFontControlBg" value="#f1f5f9" onchange="updateColors()">
+    
+    <label>لون كلمات المنشور</label>
+    <input type="color" id="colorWord" value="#4f46e5" onchange="updateColors()">
+    
+    <label>لون الفاصل</label>
+    <input type="color" id="colorSeparator" value="#94a3b8" onchange="updateColors()">
+    
+    <label>لون الترجمة</label>
+    <input type="color" id="colorTranslation" value="#475569" onchange="updateColors()">
+    
+    <label>لون خلفية زر الصوت</label>
+    <input type="color" id="colorSpeakBg" value="#eef2ff" onchange="updateColors()">
+    
+    <label>لون hover زر الصوت</label>
+    <input type="color" id="colorSpeakHover" value="#dbeafe" onchange="updateColors()">
+    
+    <label>لون hover الخيارات</label>
+    <input type="color" id="colorOptionHover" value="#f1f5f9" onchange="updateColors()">
+    
+    <label>لون الإجابة الصحيحة</label>
+    <input type="color" id="colorCorrectBg" value="#d1fae5" onchange="updateColors()">
+    
+    <label>لون الإجابة الخاطئة</label>
+    <input type="color" id="colorWrongBg" value="#fee2e2" onchange="updateColors()">
+    
+    <label>لون خلفية النوافذ</label>
+    <input type="color" id="colorModalBg" value="#ffffff" onchange="updateColors()">
+    
+    <button class="btn btn-primary" onclick="resetColors()">🔄 إعادة الضبط الافتراضي</button>
+    <button class="btn btn-outline" onclick="toggleColorPanel()">❌ إغلاق</button>
+</div>
+
 <div class="container">
     <div class="top-bar" id="topBar">
         <div style="display: flex; align-items: center; gap: 20px;">
-            <div class="score-badge">
-                📊 المتوسط: <span id="avgScore">--</span>
-            </div>
+            <div class="score-badge">📊 المتوسط: <span id="avgScore">--</span></div>
             <img id="userAvatarSmall" class="user-icon" src="https://i.pravatar.cc/150?u=default" alt="حسابي" onclick="openAccountPage()" title="إدارة الحساب">
         </div>
     </div>
@@ -638,32 +661,104 @@
     { id: 'sec10', name: 'الرعاية الإلكترونية', image: 'https://img.freepik.com/free-vector/online-care-concept-illustration_114360-4055.jpg' }
   ];
 
+  const defaultColors = {
+    bg: '#f0f4f8',
+    bg2: '#e2e8f0',
+    card: '#ffffff',
+    text: '#1e293b',
+    primary: '#4f46e5',
+    primaryLight: '#eef2ff',
+    shadowLight: '#ffffff',
+    shadowDark: '#94a3b8',
+    exampleBg: '#f8fafc',
+    exampleBorder: '#4f46e5',
+    scoreBg: '#fef9c3',
+    fontControlBg: '#f1f5f9',
+    word: '#4f46e5',
+    separator: '#94a3b8',
+    translation: '#475569',
+    speakBg: '#eef2ff',
+    speakHover: '#dbeafe',
+    optionHover: '#f1f5f9',
+    correctBg: '#d1fae5',
+    wrongBg: '#fee2e2',
+    modalBg: '#ffffff'
+  };
+
   let currentUser = null;
   let currentSections = [...defaultSections];
   let currentSectionId = null;
   let quizActive = false;
   let resultsChart = null;
 
-  // تسجيل دخول تلقائي كمجهول
-  async function autoSignIn() {
-    try {
-      const result = await signInAnonymously(auth);
-      console.log('✅ تم تسجيل الدخول تلقائياً');
-      return result.user;
-    } catch (error) {
-      console.error('❌ فشل تسجيل الدخول التلقائي:', error);
-      return null;
+  function loadSavedColors() {
+    const saved = localStorage.getItem('appColors');
+    if (saved) {
+      const colors = JSON.parse(saved);
+      Object.keys(colors).forEach(key => {
+        document.documentElement.style.setProperty(`--${key}`, colors[key]);
+        const input = document.getElementById(`color${key.charAt(0).toUpperCase() + key.slice(1)}`);
+        if (input) input.value = colors[key];
+      });
     }
   }
 
+  loadSavedColors();
+
+  window.toggleColorPanel = () => {
+    document.getElementById('colorPanel').classList.toggle('open');
+  };
+
+  window.updateColors = () => {
+    const colors = {
+      bg: document.getElementById('colorBg').value,
+      bg2: document.getElementById('colorBg2').value,
+      card: document.getElementById('colorCard').value,
+      text: document.getElementById('colorText').value,
+      primary: document.getElementById('colorPrimary').value,
+      primaryLight: document.getElementById('colorPrimaryLight').value,
+      shadowLight: document.getElementById('colorShadowLight').value,
+      shadowDark: document.getElementById('colorShadowDark').value,
+      exampleBg: document.getElementById('colorExampleBg').value,
+      exampleBorder: document.getElementById('colorExampleBorder').value,
+      scoreBg: document.getElementById('colorScoreBg').value,
+      fontControlBg: document.getElementById('colorFontControlBg').value,
+      word: document.getElementById('colorWord').value,
+      separator: document.getElementById('colorSeparator').value,
+      translation: document.getElementById('colorTranslation').value,
+      speakBg: document.getElementById('colorSpeakBg').value,
+      speakHover: document.getElementById('colorSpeakHover').value,
+      optionHover: document.getElementById('colorOptionHover').value,
+      correctBg: document.getElementById('colorCorrectBg').value,
+      wrongBg: document.getElementById('colorWrongBg').value,
+      modalBg: document.getElementById('colorModalBg').value
+    };
+    
+    Object.keys(colors).forEach(key => {
+      document.documentElement.style.setProperty(`--${key}`, colors[key]);
+    });
+    
+    localStorage.setItem('appColors', JSON.stringify(colors));
+  };
+
+  window.resetColors = () => {
+    Object.keys(defaultColors).forEach(key => {
+      document.documentElement.style.setProperty(`--${key}`, defaultColors[key]);
+      const input = document.getElementById(`color${key.charAt(0).toUpperCase() + key.slice(1)}`);
+      if (input) input.value = defaultColors[key];
+    });
+    localStorage.removeItem('appColors');
+  };
+
+  async function autoSignIn() {
+    try { return (await signInAnonymously(auth)).user; }
+    catch (error) { console.error('فشل تسجيل الدخول:', error); return null; }
+  }
+
   onAuthStateChanged(auth, async (user) => {
-    if (!user) {
-      await autoSignIn();
-      return;
-    }
+    if (!user) { await autoSignIn(); return; }
     currentUser = user;
     document.getElementById('userAvatarSmall').src = user.photoURL || 'https://i.pravatar.cc/150?u=default';
-    
     const userRef = doc(db, 'users', currentUser.uid);
     const userSnap = await getDoc(userRef);
     if (userSnap.exists()) {
@@ -672,11 +767,9 @@
       if (data.avatar) document.getElementById('userAvatarSmall').src = data.avatar;
     } else {
       await setDoc(userRef, {
-        email: currentUser.email || 'مستخدم',
-        name: currentUser.displayName || 'مستخدم',
+        email: currentUser.email || 'مستخدم', name: currentUser.displayName || 'مستخدم',
         avatar: currentUser.photoURL || 'https://i.pravatar.cc/150?u=default',
-        sections: defaultSections,
-        createdAt: new Date()
+        sections: defaultSections, createdAt: new Date()
       });
     }
     await updateAverageScore();
@@ -688,20 +781,15 @@
     for (let sec of currentSections) {
       const q = query(collection(db, 'sections', sec.id, 'quizResults'), orderBy('timestamp', 'desc'));
       const snap = await getDocs(q);
-      snap.forEach(doc => {
-        totalScore += doc.data().score;
-        count++;
-      });
+      snap.forEach(doc => { totalScore += doc.data().score; count++; });
     }
-    const avg = count > 0 ? (totalScore / count).toFixed(1) : '--';
-    document.getElementById('avgScore').textContent = avg + '%';
+    document.getElementById('avgScore').textContent = (count > 0 ? (totalScore / count).toFixed(1) : '--') + '%';
   }
 
   async function getSectionScore(sectionId) {
     const q = query(collection(db, 'sections', sectionId, 'quizResults'), orderBy('timestamp', 'desc'));
     const snap = await getDocs(q);
-    if (snap.empty) return null;
-    return snap.docs[0].data().score;
+    return snap.empty ? null : snap.docs[0].data().score;
   }
 
   function scoreLabel(score) {
@@ -733,25 +821,18 @@
   window.openSection = async (sectionId) => {
     currentSectionId = sectionId;
     const sec = currentSections.find(s => s.id === sectionId);
-    
     document.getElementById('homePage').style.display = 'none';
     document.getElementById('accountPage').classList.remove('active');
-    
     const page = document.getElementById('sectionPage');
     page.classList.add('active');
     document.getElementById('sectionPageImg').src = sec.image;
-    document.getElementById('sectionPageImg').onerror = function() {
-      this.src = 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png';
-    };
+    document.getElementById('sectionPageImg').onerror = function() { this.src = 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png'; };
     document.getElementById('sectionPageTitle').textContent = sec.name;
-    
     const score = await getSectionScore(sectionId);
     document.getElementById('sectionPageScore').textContent = `${scoreLabel(score)} ${score !== null ? `(${score}%)` : ''}`;
-    
     document.getElementById('quizBtn').onclick = () => startQuiz(sectionId);
     document.getElementById('searchInput').value = '';
     loadPosts();
-    
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -769,11 +850,9 @@
     document.getElementById('homePage').style.display = 'none';
     document.getElementById('sectionPage').classList.remove('active');
     document.getElementById('accountPage').classList.add('active');
-    
     document.getElementById('profileAvatar').src = currentUser.photoURL || 'https://i.pravatar.cc/150?u=default';
     document.getElementById('profileName').textContent = currentUser.displayName || 'مستخدم';
     document.getElementById('profileEmail').textContent = currentUser.email || currentUser.uid.substring(0, 8) + '@مستخدم';
-    
     const userRef = doc(db, 'users', currentUser.uid);
     const userSnap = await getDoc(userRef);
     if (userSnap.exists()) {
@@ -781,7 +860,6 @@
       if (data.avatar) document.getElementById('profileAvatar').src = data.avatar;
       if (data.name) document.getElementById('profileName').textContent = data.name;
     }
-    
     await loadChart();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -796,31 +874,19 @@
   window.editProfileName = async () => {
     const newName = prompt('الرجاء إدخال الاسم الجديد:', document.getElementById('profileName').textContent);
     if (newName && newName.trim()) {
-      try {
-        await updateDoc(doc(db, 'users', currentUser.uid), { name: newName.trim() });
-        document.getElementById('profileName').textContent = newName.trim();
-        alert('✅ تم تحديث الاسم بنجاح');
-      } catch (error) {
-        alert('❌ حدث خطأ: ' + error.message);
-      }
+      await updateDoc(doc(db, 'users', currentUser.uid), { name: newName.trim() });
+      document.getElementById('profileName').textContent = newName.trim();
     }
   };
 
   window.updateAvatar = async (event) => {
     const file = event.target.files[0];
     if (!file) return;
-    
     const reader = new FileReader();
     reader.onload = async (e) => {
-      const base64 = e.target.result;
-      document.getElementById('profileAvatar').src = base64;
-      document.getElementById('userAvatarSmall').src = base64;
-      try {
-        await updateDoc(doc(db, 'users', currentUser.uid), { avatar: base64 });
-        alert('✅ تم تحديث الصورة بنجاح');
-      } catch (error) {
-        alert('❌ حدث خطأ: ' + error.message);
-      }
+      document.getElementById('profileAvatar').src = e.target.result;
+      document.getElementById('userAvatarSmall').src = e.target.result;
+      await updateDoc(doc(db, 'users', currentUser.uid), { avatar: e.target.result });
     };
     reader.readAsDataURL(file);
   };
@@ -828,78 +894,28 @@
   async function loadChart() {
     const allResults = [];
     for (let sec of currentSections) {
-      const q = query(collection(db, 'sections', sec.id, 'quizResults'), orderBy('timestamp', 'asc'));
-      const snap = await getDocs(q);
+      const snap = await getDocs(query(collection(db, 'sections', sec.id, 'quizResults'), orderBy('timestamp', 'asc')));
       snap.forEach(doc => {
         const data = doc.data();
-        allResults.push({
-          section: sec.name,
-          score: data.score,
-          timestamp: data.timestamp?.toDate() || new Date()
-        });
+        allResults.push({ section: sec.name, score: data.score, timestamp: data.timestamp?.toDate() || new Date() });
       });
     }
-    
     allResults.sort((a, b) => a.timestamp - b.timestamp);
-    
-    const labels = allResults.map(r => {
-      const d = r.timestamp;
-      return `${d.getDate()}/${d.getMonth()+1}/${d.getFullYear()}`;
-    });
+    const labels = allResults.map(r => `${r.timestamp.getDate()}/${r.timestamp.getMonth()+1}/${r.timestamp.getFullYear()}`);
     const scores = allResults.map(r => r.score);
-    
     const totalAvg = scores.length > 0 ? (scores.reduce((a,b) => a+b, 0) / scores.length).toFixed(1) : 0;
-    let levelText = '';
-    if (totalAvg >= 90) levelText = '🏆 المستوى المتقدم';
-    else if (totalAvg >= 70) levelText = '🥇 مستوى جيد جداً';
-    else if (totalAvg >= 50) levelText = '🥈 مستوى متوسط';
-    else if (totalAvg >= 30) levelText = '🥉 مستوى مقبول';
-    else levelText = '📚 مستوى مبتدئ';
-    
+    let levelText = totalAvg >= 90 ? '🏆 المستوى المتقدم' : totalAvg >= 70 ? '🥇 مستوى جيد جداً' : totalAvg >= 50 ? '🥈 مستوى متوسط' : totalAvg >= 30 ? '🥉 مستوى مقبول' : '📚 مستوى مبتدئ';
     document.getElementById('chartLevel').textContent = `${levelText} - المتوسط العام: ${totalAvg}%`;
-    
     const ctx = document.getElementById('resultsChart').getContext('2d');
     if (resultsChart) resultsChart.destroy();
-    
-    if (scores.length === 0) {
-      document.getElementById('chartLevel').textContent = 'لا توجد بيانات اختبارات بعد';
-      return;
-    }
-    
+    if (scores.length === 0) { document.getElementById('chartLevel').textContent = 'لا توجد بيانات اختبارات بعد'; return; }
     resultsChart = new Chart(ctx, {
       type: 'line',
-      data: {
-        labels: labels,
-        datasets: [{
-          label: 'نتيجة الاختبار (%)',
-          data: scores,
-          borderColor: '#4f46e5',
-          backgroundColor: 'rgba(79, 70, 229, 0.1)',
-          borderWidth: 3,
-          pointBackgroundColor: '#4f46e5',
-          pointRadius: 6,
-          pointHoverRadius: 8,
-          fill: true,
-          tension: 0.4
-        }]
-      },
-      options: {
-        responsive: true,
-        plugins: {
-          legend: { display: true, labels: { font: { size: 14 } } }
-        },
-        scales: {
-          y: {
-            beginAtZero: true,
-            max: 100,
-            ticks: { callback: value => value + '%' }
-          }
-        }
-      }
+      data: { labels, datasets: [{ label: 'نتيجة الاختبار (%)', data: scores, borderColor: '#4f46e5', backgroundColor: 'rgba(79,70,229,0.1)', borderWidth: 3, pointBackgroundColor: '#4f46e5', pointRadius: 6, pointHoverRadius: 8, fill: true, tension: 0.4 }] },
+      options: { responsive: true, plugins: { legend: { display: true, labels: { font: { size: 14 } } } }, scales: { y: { beginAtZero: true, max: 100, ticks: { callback: v => v + '%' } } } }
     });
   }
-
-  window.startQuiz = async (sectionId) => {
+window.startQuiz = async (sectionId) => {
     if (quizActive) return;
     
     const q = query(collection(db, 'sections', sectionId, 'questions'));
@@ -927,6 +943,20 @@
     modal.classList.remove('hidden');
     document.body.style.overflow = 'hidden';
 
+    function getYouTubeId(url) {
+      if (!url) return null;
+      // صيغ يوتيوب المختلفة
+      const patterns = [
+        /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\s]+)/,
+        /youtube\.com\/watch\?.*v=([^&\s]+)/
+      ];
+      for (let pattern of patterns) {
+        const match = url.match(pattern);
+        if (match) return match[1];
+      }
+      return null;
+    }
+
     function showQuestion() {
       if (currentQ >= selectedQuestions.length) {
         return showResult();
@@ -939,20 +969,59 @@
       window._currentQuestionData = { qData, correctAnswer, total: selectedQuestions.length };
       
       let mediaHTML = '';
-      if (qData.type === 'audio' && qData.mediaUrl) {
-        mediaHTML = `<audio controls style="width:100%;margin-bottom:15px;"><source src="${qData.mediaUrl}" type="audio/mpeg"></audio>`;
-      } else if (qData.type === 'image' && qData.mediaUrl) {
-        mediaHTML = `<img class="quiz-media" src="${qData.mediaUrl}" alt="صورة السؤال" onerror="this.style.display='none'">`;
-      } else if (qData.type === 'video' && qData.mediaUrl) {
-        if (qData.mediaUrl.includes('youtube.com/embed/') || qData.mediaUrl.includes('youtube.com/watch?v=')) {
-          let videoId = qData.mediaUrl;
-          if (videoId.includes('watch?v=')) {
-            videoId = videoId.split('watch?v=')[1].split('&')[0];
-            videoId = `https://www.youtube.com/embed/${videoId}`;
+      
+      // معالجة الوسائط حسب النوع
+      if (qData.mediaUrl && qData.type !== 'text') {
+        const url = qData.mediaUrl.trim();
+        
+        if (qData.type === 'audio') {
+          // صوت
+          mediaHTML = `
+            <div style="text-align:center;margin-bottom:20px;">
+              <audio controls style="width:100%;max-width:500px;">
+                <source src="${url}" type="audio/mpeg">
+                <source src="${url}" type="audio/wav">
+                <source src="${url}" type="audio/ogg">
+                متصفحك لا يدعم تشغيل الصوت.
+              </audio>
+            </div>`;
+        } 
+        else if (qData.type === 'image') {
+          // صورة
+          mediaHTML = `
+            <div style="text-align:center;margin-bottom:20px;">
+              <img src="${url}" alt="صورة السؤال" 
+                   style="max-width:100%;max-height:300px;border-radius:16px;object-fit:contain;"
+                   onerror="this.parentElement.innerHTML='<p style=color:red;>❌ فشل تحميل الصورة. تأكد من الرابط.</p>'">
+            </div>`;
+        } 
+        else if (qData.type === 'video') {
+          // فيديو - يوتيوب أو مباشر
+          const youtubeId = getYouTubeId(url);
+          
+          if (youtubeId) {
+            // رابط يوتيوب
+            mediaHTML = `
+              <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;max-width:100%;border-radius:16px;margin-bottom:20px;">
+                <iframe 
+                  src="https://www.youtube.com/embed/${youtubeId}?autoplay=0&rel=0" 
+                  style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:16px;"
+                  frameborder="0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                  allowfullscreen>
+                </iframe>
+              </div>`;
+          } else {
+            // فيديو مباشر
+            mediaHTML = `
+              <div style="text-align:center;margin-bottom:20px;">
+                <video controls style="max-width:100%;max-height:300px;border-radius:16px;">
+                  <source src="${url}" type="video/mp4">
+                  <source src="${url}" type="video/webm">
+                  متصفحك لا يدعم تشغيل الفيديو.
+                </video>
+              </div>`;
           }
-          mediaHTML = `<div class="youtube-container"><iframe src="${videoId}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>`;
-        } else {
-          mediaHTML = `<video class="quiz-media" controls><source src="${qData.mediaUrl}" type="video/mp4"></video>`;
         }
       }
       
@@ -973,7 +1042,7 @@
     window.selectQuizAnswer = (selectedIdx) => {
       if (!quizActive || !window._currentQuestionData) return;
       
-      const { correctAnswer, total } = window._currentQuestionData;
+      const { correctAnswer } = window._currentQuestionData;
       const options = content.querySelectorAll('.quiz-option');
       
       options.forEach((opt, i) => {
@@ -986,12 +1055,12 @@
       
       setTimeout(() => {
         currentQ++;
-        if (currentQ < total) {
+        if (currentQ < selectedQuestions.length) {
           showQuestion();
         } else {
           showResult();
         }
-      }, 1000);
+      }, 1500);
     };
 
     async function showResult() {
@@ -1034,98 +1103,56 @@
     document.body.style.overflow = '';
   };
 
-  function shuffleArray(array) {
-    const arr = [...array];
-    for (let i = arr.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [arr[i], arr[j]] = [arr[j], arr[i]];
-    }
-    return arr;
-  }
-
-  function escapeHTML(str) {
-    if (!str) return '';
-    const div = document.createElement('div');
-    div.textContent = str;
-    return div.innerHTML;
-  }
-
-  function escapeQuotes(str) {
-    if (!str) return '';
-    return str.replace(/'/g, "\\'").replace(/"/g, '&quot;');
-  }
+  function shuffleArray(a) { const arr = [...a]; for (let i = arr.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [arr[i], arr[j]] = [arr[j], arr[i]]; } return arr; }
+  function escapeHTML(s) { if (!s) return ''; const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+  function escapeQuotes(s) { return s ? s.replace(/'/g, "\\'").replace(/"/g, '&quot;') : ''; }
 
   async function loadPosts(searchTerm = '') {
     const container = document.getElementById('postsContainer');
     container.innerHTML = '<p class="no-posts">⏳ جاري التحميل...</p>';
-    
-    const q = query(collection(db, 'sections', currentSectionId, 'posts'), orderBy('createdAt', 'desc'));
-    const snap = await getDocs(q);
+    const snap = await getDocs(query(collection(db, 'sections', currentSectionId, 'posts'), orderBy('createdAt', 'desc')));
     container.innerHTML = '';
-    
-    if (snap.empty) {
-      container.innerHTML = '<p class="no-posts">📭 لا توجد منشورات بعد.</p>';
-      return;
-    }
-    
+    if (snap.empty) { container.innerHTML = '<p class="no-posts">📭 لا توجد منشورات بعد.</p>'; return; }
     let hasResults = false;
     snap.forEach(docSnap => {
       const p = docSnap.data();
       if (searchTerm && !`${p.word1} ${p.word2} ${p.translation} ${p.example}`.toLowerCase().includes(searchTerm.toLowerCase())) return;
-      
       hasResults = true;
       const postId = docSnap.id;
       const postDiv = document.createElement('div');
       postDiv.className = 'post';
       postDiv.setAttribute('data-post-id', postId);
       postDiv.style.fontSize = '18px';
-      
       postDiv.innerHTML = `
         <div class="post-words-row">
-          <div class="post-word">
-            ${escapeHTML(p.word1)}
-            <button class="speak-btn" onclick="event.stopPropagation(); speakWord('${escapeQuotes(p.word1)}')" title="استمع للكلمة">🔊</button>
-          </div>
+          <div class="post-word">${escapeHTML(p.word1)} <button class="speak-btn" onclick="event.stopPropagation(); speakWord('${escapeQuotes(p.word1)}')">🔊</button></div>
           <span class="word-separator">/</span>
-          <div class="post-word">
-            ${escapeHTML(p.word2)}
-            <button class="speak-btn" onclick="event.stopPropagation(); speakWord('${escapeQuotes(p.word2)}')" title="استمع للكلمة">🔊</button>
-          </div>
+          <div class="post-word">${escapeHTML(p.word2)} <button class="speak-btn" onclick="event.stopPropagation(); speakWord('${escapeQuotes(p.word2)}')">🔊</button></div>
         </div>
         <div class="post-translation">📖 ${escapeHTML(p.translation)}</div>
         <div class="post-example-box">
-          <div class="post-example-text">
-            <span>💬 ${escapeHTML(p.example)}</span>
-            <button class="speak-btn" onclick="event.stopPropagation(); speakWord('${escapeQuotes(p.example)}')" title="استمع للمثال" style="width:40px;height:40px;font-size:1.1rem;">🔊</button>
-          </div>
+          <div class="post-example-text"><span>💬 ${escapeHTML(p.example)}</span> <button class="speak-btn" onclick="event.stopPropagation(); speakWord('${escapeQuotes(p.example)}')" style="width:40px;height:40px;font-size:1.1rem;">🔊</button></div>
           <div class="post-example-trans">🔁 ${escapeHTML(p.exampleTranslation)}</div>
         </div>
         <div class="post-actions">
           <div class="font-control">
-            <button onclick="changeFontSize('${postId}', -2)" title="تصغير الخط">A-</button>
-            <input type="range" min="14" max="100" value="18" oninput="setFontSize('${postId}', this.value)" title="حجم الخط">
-            <button onclick="changeFontSize('${postId}', 2)" title="تكبير الخط">A+</button>
+            <button onclick="changeFontSize('${postId}', -2)">A-</button>
+            <input type="range" min="14" max="100" value="18" oninput="setFontSize('${postId}', this.value)">
+            <button onclick="changeFontSize('${postId}', 2)">A+</button>
             <span class="font-size-label" id="fontLabel-${postId}">18</span>
           </div>
-        </div>
-      `;
+        </div>`;
       container.appendChild(postDiv);
     });
-    
-    if (!hasResults && searchTerm) {
-      container.innerHTML = '<p class="no-posts">🔍 لا توجد نتائج تطابق بحثك.</p>';
-    }
+    if (!hasResults && searchTerm) container.innerHTML = '<p class="no-posts">🔍 لا توجد نتائج.</p>';
   }
 
   window.speakWord = (text) => {
     if ('speechSynthesis' in window) {
       speechSynthesis.cancel();
-      const utter = new SpeechSynthesisUtterance(text);
-      utter.lang = 'en-US';
-      utter.rate = 0.85;
-      utter.pitch = 1;
-      utter.volume = 1;
-      speechSynthesis.speak(utter);
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = 'en-US'; u.rate = 0.85;
+      speechSynthesis.speak(u);
     }
   };
 
@@ -1133,16 +1160,13 @@
     const post = document.querySelector(`[data-post-id="${postId}"]`);
     const label = document.getElementById(`fontLabel-${postId}`);
     const slider = post?.querySelector('input[type="range"]');
-    
     if (post && slider) {
-      let newSize = parseInt(slider.value) + delta;
-      newSize = Math.max(14, Math.min(100, newSize));
-      slider.value = newSize;
-      const word1 = post.querySelector('.post-word');
-      const exampleText = post.querySelector('.post-example-text');
-      if (word1) word1.style.fontSize = newSize + 'px';
-      if (exampleText) exampleText.style.fontSize = newSize + 'px';
-      if (label) label.textContent = newSize;
+      let ns = Math.max(14, Math.min(100, parseInt(slider.value) + delta));
+      slider.value = ns;
+      const w = post.querySelector('.post-word'), e = post.querySelector('.post-example-text');
+      if (w) w.style.fontSize = ns + 'px';
+      if (e) e.style.fontSize = ns + 'px';
+      if (label) label.textContent = ns;
     }
   };
 
@@ -1150,32 +1174,18 @@
     const post = document.querySelector(`[data-post-id="${postId}"]`);
     const label = document.getElementById(`fontLabel-${postId}`);
     if (post) {
-      const word1 = post.querySelector('.post-word');
-      const exampleText = post.querySelector('.post-example-text');
-      if (word1) word1.style.fontSize = size + 'px';
-      if (exampleText) exampleText.style.fontSize = size + 'px';
+      const w = post.querySelector('.post-word'), e = post.querySelector('.post-example-text');
+      if (w) w.style.fontSize = size + 'px';
+      if (e) e.style.fontSize = size + 'px';
       if (label) label.textContent = size;
     }
   };
 
-  window.searchPosts = () => {
-    const term = document.getElementById('searchInput').value;
-    loadPosts(term);
-  };
+  window.searchPosts = () => loadPosts(document.getElementById('searchInput').value);
+  window.logout = async () => { if (confirm('تسجيل الخروج؟')) { await signOut(auth); location.reload(); } };
+  document.getElementById('quizModal').addEventListener('click', function(e) { if (e.target === this) closeQuiz(); });
 
-  window.logout = async () => {
-    if (confirm('هل أنت متأكد من تسجيل الخروج؟ سيتم فقدان بياناتك إذا لم تقم بربط حساب.')) {
-      await signOut(auth);
-      location.reload();
-    }
-  };
-
-  document.getElementById('quizModal').addEventListener('click', function(e) {
-    if (e.target === this) closeQuiz();
-  });
-
-  console.log('✅ تم تحميل نظام المشاهدة والاختبار بنجاح');
+  console.log('✅ تم التحميل مع السطر الأصلي للخلفيات');
 </script>
-
 </body>
 </html>
