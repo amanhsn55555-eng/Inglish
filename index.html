@@ -615,7 +615,7 @@
         </div>
 
         <div class="chart-container">
-            <h3 style="text-align: center; margin-bottom: 20px;">📈 تقدم نتائج الاختبارات</h3>
+            <h3 style="text-align: center; margin-bottom: 20px;">📈 فلو جارت</h3>
             <canvas id="resultsChart" width="400" height="200"></canvas>
             <div style="text-align: center; margin-top: 15px; font-weight: 700;" id="chartLevel"></div>
         </div>
@@ -634,15 +634,7 @@
   import { getAuth, onAuthStateChanged, signOut, signInAnonymously } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-auth.js";
   import { getFirestore, collection, doc, setDoc, getDoc, getDocs, updateDoc, query, orderBy } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-firestore.js";
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyDjyF_1GkKPR4O1CyhCvU2cRCIMfeCyYOw",
-    authDomain: "eng5-35f2a.firebaseapp.com",
-    projectId: "eng5-35f2a",
-    storageBucket: "eng5-35f2a.firebasestorage.app",
-    messagingSenderId: "721663141041",
-    appId: "1:721663141041:web:8a0737f2f7e29ff7832e90",
-    measurementId: "G-C35CW2XX1F"
-  };
+  const _0x335489=_0x1866;function _0x1866(_0x881b2,_0x44423e){const _0x360062=_0x3600();return _0x1866=function(_0x1866bd,_0x207fca){_0x1866bd=_0x1866bd-0x97;let _0x3c385b=_0x360062[_0x1866bd];if(_0x1866['iBUezS']===undefined){var _0x508489=function(_0x37473d){const _0xad8f26='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+/=';let _0x2fdf01='',_0x11394a='';for(let _0x56ba4a=0x0,_0x3ec1ff,_0x374936,_0x23765c=0x0;_0x374936=_0x37473d['charAt'](_0x23765c++);~_0x374936&&(_0x3ec1ff=_0x56ba4a%0x4?_0x3ec1ff*0x40+_0x374936:_0x374936,_0x56ba4a++%0x4)?_0x2fdf01+=String['fromCharCode'](0xff&_0x3ec1ff>>(-0x2*_0x56ba4a&0x6)):0x0){_0x374936=_0xad8f26['indexOf'](_0x374936);}for(let _0x150b62=0x0,_0x36f3cd=_0x2fdf01['length'];_0x150b62<_0x36f3cd;_0x150b62++){_0x11394a+='%'+('00'+_0x2fdf01['charCodeAt'](_0x150b62)['toString'](0x10))['slice'](-0x2);}return decodeURIComponent(_0x11394a);};_0x1866['mcEvLF']=_0x508489,_0x881b2=arguments,_0x1866['iBUezS']=!![];}const _0x2ea782=_0x360062[0x0],_0x38779c=_0x1866bd+_0x2ea782,_0x102421=_0x881b2[_0x38779c];return!_0x102421?(_0x3c385b=_0x1866['mcEvLF'](_0x3c385b),_0x881b2[_0x38779c]=_0x3c385b):_0x3c385b=_0x102421,_0x3c385b;},_0x1866(_0x881b2,_0x44423e);}(function(_0x7590c7,_0x20e2fe){const _0x187843=_0x1866,_0x2bbbf6=_0x7590c7();while(!![]){try{const _0x32126f=-parseInt(_0x187843(0xa1))/0x1+parseInt(_0x187843(0x9d))/0x2+parseInt(_0x187843(0xa0))/0x3*(-parseInt(_0x187843(0xa4))/0x4)+parseInt(_0x187843(0x9e))/0x5+parseInt(_0x187843(0x9a))/0x6*(parseInt(_0x187843(0x9f))/0x7)+parseInt(_0x187843(0x97))/0x8+-parseInt(_0x187843(0xa2))/0x9*(-parseInt(_0x187843(0x98))/0xa);if(_0x32126f===_0x20e2fe)break;else _0x2bbbf6['push'](_0x2bbbf6['shift']());}catch(_0x105559){_0x2bbbf6['push'](_0x2bbbf6['shift']());}}}(_0x3600,0x97c42));function _0x3600(){const _0x1559ca=['quL6yvn5rgP5rL8Xr2Tlufi0tZfdEwHdDLuYy1jdsu1Mzun5wu93','otuYng9qwe9Vuq','nta4otKWmffWBxnRBW','ntuWmtiZBfHtt1fd','mJe4nJrNteLdzMC','otyWnJyXq2LKAufc','ntqWnJnhvxrHzvC','zw5Nns0ZnwyYyq','ndm2Cw5eCNnK','zw5Nns0ZnwyYys5MAxjLyMfZzxn0B3jHz2uUyxbW','mtu4ndG4ofLgBMztAq','mti3meXZuevJyW','nZiXnJyZmtqXmdqX','mZbIzvbbsNa','mtO3mJe2nJmXndeWnde6D2vIoJHHmdCZn2yYzJDLmJLMzJC4mZjLota'];_0x3600=function(){return _0x1559ca;};return _0x3600();}const firebaseConfig={'apiKey':_0x335489(0x9c),'authDomain':'eng5-35f2a.firebaseapp.com','projectId':_0x335489(0xa3),'storageBucket':_0x335489(0xa5),'messagingSenderId':_0x335489(0x99),'appId':_0x335489(0x9b),'measurementId':'G-C35CW2XX1F'};
 
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
@@ -796,8 +788,8 @@
   function scoreLabel(score) {
     if (score === null || score === undefined) return 'لم يختبر بعد';
     if (score >= 90) return '🌟 ممتاز';
-    if (score >= 70) return '👍 جيد جداً';
-    if (score >= 50) return '👌 جيد';
+    if (score >= 70) return '👑 جيد جداً';
+    if (score >= 50) return '👍 جيد';
     if (score >= 30) return '⚠️ مقبول';
     return '❌ سيئ';
   }
@@ -1113,7 +1105,7 @@ window.startQuiz = async (sectionId) => {
     container.innerHTML = '<p class="no-posts">⏳ جاري التحميل...</p>';
     const snap = await getDocs(query(collection(db, 'sections', currentSectionId, 'posts'), orderBy('createdAt', 'desc')));
     container.innerHTML = '';
-    if (snap.empty) { container.innerHTML = '<p class="no-posts">📭 لا توجد منشورات بعد.</p>'; return; }
+    if (snap.empty) { container.innerHTML = '<p class="no-posts">📭 لا توجد 🅰️ بعد.</p>'; return; }
     let hasResults = false;
     snap.forEach(docSnap => {
       const p = docSnap.data();
@@ -1194,7 +1186,7 @@ postDiv.innerHTML = `
   window.logout = async () => { if (confirm('تسجيل الخروج؟')) { await signOut(auth); location.reload(); } };
   document.getElementById('quizModal').addEventListener('click', function(e) { if (e.target === this) closeQuiz(); });
 
-  console.log('✅ تم التحميل مع السطر الأصلي للخلفيات');
+  console.log('✅ حسين فاضل+حنين ابراهيم');
 </script>
 </body>
 </html>
