@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>لوحة الأقسام التعليمية - مشاهدة واختبار</title>
+    
+    <title>تعلم اللغة الإنجليزية لكبار السن في العراق - منصة إنجلش للدراسة أونلاين</title>
+    <meta name="description" content="منصة تعلم اللغة الإنجليزية المتخصصة لكبار السن في العراق. دراسة انكليزية سهلة ومبسطة مع دروس تفاعلية.">
+    <meta name="keywords" content="تعلم اللغة الانجليزية لكبار السن العراق, تعلم اللغة الانجليزية, دراسة انكليزية, تعلم لغات, كبار السن, تعلم انكليزي, دورات انجليزي للعراقيين">
+    
     <style>
         :root {
             --bg: #f0f4f8;
@@ -44,6 +48,7 @@
             font-size: 18px;
             line-height: 1.6;
             color: var(--text);
+            min-height: 100vh;
         }
         
         .container {
@@ -575,7 +580,10 @@
     <div class="top-bar" id="topBar">
         <div style="display: flex; align-items: center; gap: 20px;">
             <div class="score-badge">📊 المتوسط: <span id="avgScore">--</span></div>
-            <img id="DEFAULT_AVATAR" class="user-icon" src="https://iili.io/B65ES0x.png" alt="حسابي" onclick="openAccountPage()" title="إدارة الحساب">
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <span id="userNameDisplay" style="font-weight: 700; color: var(--text);"></span>
+                <img id="userAvatarSmall" class="user-icon" src="https://iili.io/B65ES0x.png" alt="حسابي" onclick="openAccountPage()" title="إدارة الحساب">
+            </div>
         </div>
     </div>
 
@@ -606,7 +614,7 @@
         <div class="profile-card">
             <button class="btn btn-outline" onclick="closeAccountPage()" style="float: left;">🔙 رجوع</button>
             <h2>إدارة الحساب</h2>
-            <img id="DEFAULT_AVATAR" class="profile-avatar" src="https://iili.io/B65ES0x.png" alt="صورة الحساب">
+            <img id="profileAvatar" class="profile-avatar" src="https://iili.io/B65ES0x.png" alt="صورة الحساب">
             <h3 id="profileName">مستخدم</h3>
             <p id="profileEmail">@</p>
             <button class="btn btn-primary" onclick="document.getElementById('avatarUpload').click()">📷 تغيير الصورة</button>
@@ -631,16 +639,22 @@
 
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-app.js";
-  import { getAuth, onAuthStateChanged, signOut, signInAnonymously } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-auth.js";
   import { getFirestore, collection, doc, setDoc, getDoc, getDocs, updateDoc, query, orderBy } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-firestore.js";
 
-  const _0x335489=_0x1866;function _0x1866(_0x881b2,_0x44423e){const _0x360062=_0x3600();return _0x1866=function(_0x1866bd,_0x207fca){_0x1866bd=_0x1866bd-0x97;let _0x3c385b=_0x360062[_0x1866bd];if(_0x1866['iBUezS']===undefined){var _0x508489=function(_0x37473d){const _0xad8f26='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+/=';let _0x2fdf01='',_0x11394a='';for(let _0x56ba4a=0x0,_0x3ec1ff,_0x374936,_0x23765c=0x0;_0x374936=_0x37473d['charAt'](_0x23765c++);~_0x374936&&(_0x3ec1ff=_0x56ba4a%0x4?_0x3ec1ff*0x40+_0x374936:_0x374936,_0x56ba4a++%0x4)?_0x2fdf01+=String['fromCharCode'](0xff&_0x3ec1ff>>(-0x2*_0x56ba4a&0x6)):0x0){_0x374936=_0xad8f26['indexOf'](_0x374936);}for(let _0x150b62=0x0,_0x36f3cd=_0x2fdf01['length'];_0x150b62<_0x36f3cd;_0x150b62++){_0x11394a+='%'+('00'+_0x2fdf01['charCodeAt'](_0x150b62)['toString'](0x10))['slice'](-0x2);}return decodeURIComponent(_0x11394a);};_0x1866['mcEvLF']=_0x508489,_0x881b2=arguments,_0x1866['iBUezS']=!![];}const _0x2ea782=_0x360062[0x0],_0x38779c=_0x1866bd+_0x2ea782,_0x102421=_0x881b2[_0x38779c];return!_0x102421?(_0x3c385b=_0x1866['mcEvLF'](_0x3c385b),_0x881b2[_0x38779c]=_0x3c385b):_0x3c385b=_0x102421,_0x3c385b;},_0x1866(_0x881b2,_0x44423e);}(function(_0x7590c7,_0x20e2fe){const _0x187843=_0x1866,_0x2bbbf6=_0x7590c7();while(!![]){try{const _0x32126f=-parseInt(_0x187843(0xa1))/0x1+parseInt(_0x187843(0x9d))/0x2+parseInt(_0x187843(0xa0))/0x3*(-parseInt(_0x187843(0xa4))/0x4)+parseInt(_0x187843(0x9e))/0x5+parseInt(_0x187843(0x9a))/0x6*(parseInt(_0x187843(0x9f))/0x7)+parseInt(_0x187843(0x97))/0x8+-parseInt(_0x187843(0xa2))/0x9*(-parseInt(_0x187843(0x98))/0xa);if(_0x32126f===_0x20e2fe)break;else _0x2bbbf6['push'](_0x2bbbf6['shift']());}catch(_0x105559){_0x2bbbf6['push'](_0x2bbbf6['shift']());}}}(_0x3600,0x97c42));function _0x3600(){const _0x1559ca=['quL6yvn5rgP5rL8Xr2Tlufi0tZfdEwHdDLuYy1jdsu1Mzun5wu93','otuYng9qwe9Vuq','nta4otKWmffWBxnRBW','ntuWmtiZBfHtt1fd','mJe4nJrNteLdzMC','otyWnJyXq2LKAufc','ntqWnJnhvxrHzvC','zw5Nns0ZnwyYyq','ndm2Cw5eCNnK','zw5Nns0ZnwyYys5MAxjLyMfZzxn0B3jHz2uUyxbW','mtu4ndG4ofLgBMztAq','mti3meXZuevJyW','nZiXnJyZmtqXmdqX','mZbIzvbbsNa','mtO3mJe2nJmXndeWnde6D2vIoJHHmdCZn2yYzJDLmJLMzJC4mZjLota'];_0x3600=function(){return _0x1559ca;};return _0x3600();}const firebaseConfig={'apiKey':_0x335489(0x9c),'authDomain':'eng5-35f2a.firebaseapp.com','projectId':_0x335489(0xa3),'storageBucket':_0x335489(0xa5),'messagingSenderId':_0x335489(0x99),'appId':_0x335489(0x9b),'measurementId':'G-C35CW2XX1F'};
+  const firebaseConfig = {
+    apiKey: "AIzaSyBcY7CJ3eDP4jDwRxCWkH3H-TwWC-hBZoA",
+    authDomain: "eng5-35f2a.firebaseapp.com",
+    projectId: "eng5-35f2a",
+    storageBucket: "eng5-35f2a.firebasestorage.app",
+    messagingSenderId: "569168078198",
+    appId: "1:569168078198:web:e604afae3d76ee34cbc957",
+    measurementId: "G-C35CW2XX1F"
+  };
 
   const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
   const db = getFirestore(app);
 
-    const DEFAULT_AVATAR = 'https://iili.io/B65ES0x.png';
+  const DEFAULT_AVATAR = 'https://iili.io/B65ES0x.png';
   const defaultSections = [
     { id: 'sec1', name: 'الحروف', image: 'https://iili.io/B6PBdpp.jpg' },
     { id: 'sec2', name: 'الأرقام', image: 'https://iili.io/B6PBzv4.jpg' },
@@ -651,7 +665,7 @@
     { id: 'sec7', name: 'السفر', image: 'https://iili.io/B6PCmdJ.jpg' },
     { id: 'sec8', name: 'التسوق', image: 'https://iili.io/B6Pf6bI.jpg' },
     { id: 'sec9', name: 'التواصل', image: 'https://iili.io/B6Pnfgs.jpg' },
-    { id: 'sec10', name: 'الرعاية الإلكترونية', image: ' https://iili.io/B6PnOpR.jpg' }
+    { id: 'sec10', name: 'الرعاية الإلكترونية', image: 'https://iili.io/B6PnOpR.jpg' }
   ];
 
   const defaultColors = {
@@ -678,11 +692,102 @@
     modalBg: '#ffffff'
   };
 
+  // بيانات المستخدم المخزنة محلياً
   let currentUser = null;
   let currentSections = [...defaultSections];
   let currentSectionId = null;
   let quizActive = false;
   let resultsChart = null;
+
+  // دوال التخزين المحلي
+  function getLocalUser() {
+    const stored = localStorage.getItem('appUserData');
+    if (stored) {
+      try {
+        return JSON.parse(stored);
+      } catch (e) {
+        return null;
+      }
+    }
+    return null;
+  }
+
+  function saveLocalUser(userData) {
+    localStorage.setItem('appUserData', JSON.stringify(userData));
+  }
+
+  function generateUserId() {
+    return 'user_' + Math.random().toString(36).substr(2, 9) + '_' + Date.now();
+  }
+
+  // تحميل أو إنشاء المستخدم المحلي
+  async function loadOrCreateUser() {
+    let userData = getLocalUser();
+    
+    if (userData) {
+      // المستخدم موجود محلياً
+      console.log('تم التعرف على المستخدم من التخزين المحلي:', userData.name);
+      currentUser = userData;
+      
+      // محاولة جلب البيانات من Firestore
+      try {
+        const userRef = doc(db, 'users', currentUser.uid);
+        const userSnap = await getDoc(userRef);
+        if (userSnap.exists()) {
+          const firestoreData = userSnap.data();
+          // تحديث البيانات المحلية من Firestore
+          currentUser = {
+            ...currentUser,
+            ...firestoreData,
+            uid: currentUser.uid
+          };
+          saveLocalUser(currentUser);
+        }
+      } catch (error) {
+        console.log('تعذر الاتصال بـ Firestore، استخدام البيانات المحلية');
+      }
+      
+      await initializeUI();
+    } else {
+      // إنشاء مستخدم جديد
+      const newUser = {
+        uid: generateUserId(),
+        name: 'مستخدم',
+        email: 'مستخدم محلي',
+        avatar: DEFAULT_AVATAR,
+        createdAt: new Date().toISOString()
+      };
+      
+      currentUser = newUser;
+      saveLocalUser(currentUser);
+      
+      // محاولة حفظ في Firestore
+      try {
+        await setDoc(doc(db, 'users', currentUser.uid), {
+          name: currentUser.name,
+          email: currentUser.email,
+          avatar: currentUser.avatar,
+          sections: defaultSections,
+          createdAt: new Date()
+        });
+      } catch (error) {
+        console.log('تعذر الحفظ في Firestore، تم الحفظ محلياً فقط');
+      }
+      
+      await initializeUI();
+    }
+  }
+
+  // تهيئة واجهة المستخدم
+  async function initializeUI() {
+    // تحديث الشريط العلوي
+    document.getElementById('userNameDisplay').textContent = currentUser.name;
+    document.getElementById('userAvatarSmall').src = currentUser.avatar || DEFAULT_AVATAR;
+    
+    // تحديث الصفحة الرئيسية
+    await updateAverageScore();
+    renderHomeSections();
+  }
 
   function loadSavedColors() {
     const saved = localStorage.getItem('appColors');
@@ -743,46 +848,59 @@
     localStorage.removeItem('appColors');
   };
 
-  async function autoSignIn() {
-    try { return (await signInAnonymously(auth)).user; }
-    catch (error) { console.error('فشل تسجيل الدخول:', error); return null; }
-  }
-
-  onAuthStateChanged(auth, async (user) => {
-    if (!user) { await autoSignIn(); return; }
-    currentUser = user;
-    document.getElementById('userAvatarSmall').src = user.photoURL || 'https://i.pravatar.cc/150?u=default';
-    const userRef = doc(db, 'users', currentUser.uid);
-    const userSnap = await getDoc(userRef);
-    if (userSnap.exists()) {
-      const data = userSnap.data();
-      if (data.sections) currentSections = data.sections;
-      if (data.avatar) document.getElementById('userAvatarSmall').src = data.avatar;
-    } else {
-      await setDoc(userRef, {
-        email: currentUser.email || 'مستخدم', name: currentUser.displayName || 'مستخدم',
-        avatar: currentUser.photoURL || 'https://i.pravatar.cc/150?u=default',
-        sections: defaultSections, createdAt: new Date()
-      });
-    }
-    await updateAverageScore();
-    renderHomeSections();
-  });
-
+  // تحديث المتوسط
   async function updateAverageScore() {
+    if (!currentUser) return;
+    
     let totalScore = 0, count = 0;
-    for (let sec of currentSections) {
-      const q = query(collection(db, 'sections', sec.id, 'quizResults'), orderBy('timestamp', 'desc'));
-      const snap = await getDocs(q);
-      snap.forEach(doc => { totalScore += doc.data().score; count++; });
+    
+    // التحقق من النتائج المحلية أولاً
+    const localResults = JSON.parse(localStorage.getItem('quizResults') || '{}');
+    Object.values(localResults).forEach(sectionResults => {
+      if (Array.isArray(sectionResults)) {
+        sectionResults.forEach(result => {
+          totalScore += result.score;
+          count++;
+        });
+      }
+    });
+    
+    // محاولة جلب النتائج من Firestore
+    try {
+      for (let sec of currentSections) {
+        const q = query(collection(db, 'sections', sec.id, 'quizResults'), orderBy('timestamp', 'desc'));
+        const snap = await getDocs(q);
+        snap.forEach(doc => {
+          const data = doc.data();
+          if (data.score !== undefined) {
+            totalScore += data.score;
+            count++;
+          }
+        });
+      }
+    } catch (error) {
+      // استخدام النتائج المحلية فقط
     }
+    
     document.getElementById('avgScore').textContent = (count > 0 ? (totalScore / count).toFixed(1) : '--') + '%';
   }
 
   async function getSectionScore(sectionId) {
-    const q = query(collection(db, 'sections', sectionId, 'quizResults'), orderBy('timestamp', 'desc'));
-    const snap = await getDocs(q);
-    return snap.empty ? null : snap.docs[0].data().score;
+    // التحقق من النتائج المحلية أولاً
+    const localResults = JSON.parse(localStorage.getItem('quizResults') || '{}');
+    if (localResults[sectionId] && localResults[sectionId].length > 0) {
+      const lastResult = localResults[sectionId][localResults[sectionId].length - 1];
+      return lastResult.score;
+    }
+    
+    // محاولة من Firestore
+    try {
+      const q = query(collection(db, 'sections', sectionId, 'quizResults'), orderBy('timestamp', 'desc'));
+      const snap = await getDocs(q);
+      return snap.empty ? null : snap.docs[0].data().score;
+    } catch (error) {
+      return null;
+    }
   }
 
   function scoreLabel(score) {
@@ -843,16 +961,13 @@
     document.getElementById('homePage').style.display = 'none';
     document.getElementById('sectionPage').classList.remove('active');
     document.getElementById('accountPage').classList.add('active');
-    document.getElementById('profileAvatar').src = currentUser.photoURL || 'https://i.pravatar.cc/150?u=default';
-    document.getElementById('profileName').textContent = currentUser.displayName || 'مستخدم';
-    document.getElementById('profileEmail').textContent = currentUser.email || currentUser.uid.substring(0, 8) + '@مستخدم';
-    const userRef = doc(db, 'users', currentUser.uid);
-    const userSnap = await getDoc(userRef);
-    if (userSnap.exists()) {
-      const data = userSnap.data();
-      if (data.avatar) document.getElementById('profileAvatar').src = data.avatar;
-      if (data.name) document.getElementById('profileName').textContent = data.name;
+    
+    if (currentUser) {
+      document.getElementById('profileAvatar').src = currentUser.avatar || DEFAULT_AVATAR;
+      document.getElementById('profileName').textContent = currentUser.name || 'مستخدم';
+      document.getElementById('profileEmail').textContent = currentUser.email || 'مستخدم محلي';
     }
+    
     await loadChart();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -865,10 +980,20 @@
   };
 
   window.editProfileName = async () => {
-    const newName = prompt('الرجاء إدخال الاسم الجديد:', document.getElementById('profileName').textContent);
+    const newName = prompt('الرجاء إدخال الاسم الجديد:', currentUser.name || 'مستخدم');
     if (newName && newName.trim()) {
-      await updateDoc(doc(db, 'users', currentUser.uid), { name: newName.trim() });
+      currentUser.name = newName.trim();
+      saveLocalUser(currentUser);
+      
       document.getElementById('profileName').textContent = newName.trim();
+      document.getElementById('userNameDisplay').textContent = newName.trim();
+      
+      // محاولة تحديث Firestore
+      try {
+        await updateDoc(doc(db, 'users', currentUser.uid), { name: newName.trim() });
+      } catch (error) {
+        console.log('تم تحديث الاسم محلياً فقط');
+      }
     }
   };
 
@@ -877,22 +1002,57 @@
     if (!file) return;
     const reader = new FileReader();
     reader.onload = async (e) => {
+      currentUser.avatar = e.target.result;
+      saveLocalUser(currentUser);
+      
       document.getElementById('profileAvatar').src = e.target.result;
       document.getElementById('userAvatarSmall').src = e.target.result;
-      await updateDoc(doc(db, 'users', currentUser.uid), { avatar: e.target.result });
+      
+      // محاولة تحديث Firestore
+      try {
+        await updateDoc(doc(db, 'users', currentUser.uid), { avatar: e.target.result });
+      } catch (error) {
+        console.log('تم تحديث الصورة محلياً فقط');
+      }
     };
     reader.readAsDataURL(file);
   };
 
   async function loadChart() {
     const allResults = [];
-    for (let sec of currentSections) {
-      const snap = await getDocs(query(collection(db, 'sections', sec.id, 'quizResults'), orderBy('timestamp', 'asc')));
-      snap.forEach(doc => {
-        const data = doc.data();
-        allResults.push({ section: sec.name, score: data.score, timestamp: data.timestamp?.toDate() || new Date() });
-      });
+    
+    // جمع النتائج المحلية
+    const localResults = JSON.parse(localStorage.getItem('quizResults') || '{}');
+    Object.entries(localResults).forEach(([sectionId, results]) => {
+      const section = currentSections.find(s => s.id === sectionId);
+      if (results && Array.isArray(results)) {
+        results.forEach(result => {
+          allResults.push({
+            section: section ? section.name : sectionId,
+            score: result.score,
+            timestamp: new Date(result.timestamp)
+          });
+        });
+      }
+    });
+    
+    // جمع النتائج من Firestore
+    try {
+      for (let sec of currentSections) {
+        const snap = await getDocs(query(collection(db, 'sections', sec.id, 'quizResults'), orderBy('timestamp', 'asc')));
+        snap.forEach(doc => {
+          const data = doc.data();
+          allResults.push({
+            section: sec.name,
+            score: data.score,
+            timestamp: data.timestamp?.toDate() || new Date()
+          });
+        });
+      }
+    } catch (error) {
+      // استخدام النتائج المحلية فقط
     }
+    
     allResults.sort((a, b) => a.timestamp - b.timestamp);
     const labels = allResults.map(r => `${r.timestamp.getDate()}/${r.timestamp.getMonth()+1}/${r.timestamp.getFullYear()}`);
     const scores = allResults.map(r => r.score);
@@ -908,21 +1068,28 @@
       options: { responsive: true, plugins: { legend: { display: true, labels: { font: { size: 14 } } } }, scales: { y: { beginAtZero: true, max: 100, ticks: { callback: v => v + '%' } } } }
     });
   }
-window.startQuiz = async (sectionId) => {
+
+  window.startQuiz = async (sectionId) => {
     if (quizActive) return;
     
-    const q = query(collection(db, 'sections', sectionId, 'questions'));
-    const snap = await getDocs(q);
+    let allQuestions = [];
     
-    if (snap.empty) {
-      alert('⚠️ لا توجد أسئلة في هذا القسم بعد.');
-      return;
+    // محاولة جلب الأسئلة من Firestore
+    try {
+      const q = query(collection(db, 'sections', sectionId, 'questions'));
+      const snap = await getDocs(q);
+      snap.forEach(docSnap => {
+        allQuestions.push({ id: docSnap.id, ...docSnap.data() });
+      });
+    } catch (error) {
+      console.log('تعذر جلب الأسئلة من Firestore');
     }
     
-    let allQuestions = [];
-    snap.forEach(docSnap => {
-      allQuestions.push({ id: docSnap.id, ...docSnap.data() });
-    });
+    if (allQuestions.length === 0) {
+      // الحصول على الأسئلة من التخزين المحلي أو استخدام أسئلة افتراضية
+      const localQuestions = JSON.parse(localStorage.getItem(`questions_${sectionId}`) || '[]');
+      allQuestions = localQuestions.length > 0 ? localQuestions : getDefaultQuestions(sectionId);
+    }
     
     allQuestions = shuffleArray(allQuestions);
     const selectedQuestions = allQuestions.slice(0, Math.min(10, allQuestions.length));
@@ -936,20 +1103,6 @@ window.startQuiz = async (sectionId) => {
     modal.classList.remove('hidden');
     document.body.style.overflow = 'hidden';
 
-    function getYouTubeId(url) {
-      if (!url) return null;
-      // صيغ يوتيوب المختلفة
-      const patterns = [
-        /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\s]+)/,
-        /youtube\.com\/watch\?.*v=([^&\s]+)/
-      ];
-      for (let pattern of patterns) {
-        const match = url.match(pattern);
-        if (match) return match[1];
-      }
-      return null;
-    }
-
     function showQuestion() {
       if (currentQ >= selectedQuestions.length) {
         return showResult();
@@ -961,66 +1114,8 @@ window.startQuiz = async (sectionId) => {
       
       window._currentQuestionData = { qData, correctAnswer, total: selectedQuestions.length };
       
-      let mediaHTML = '';
-      
-      // معالجة الوسائط حسب النوع
-      if (qData.mediaUrl && qData.type !== 'text') {
-        const url = qData.mediaUrl.trim();
-        
-        if (qData.type === 'audio') {
-          // صوت
-          mediaHTML = `
-            <div style="text-align:center;margin-bottom:20px;">
-              <audio controls style="width:100%;max-width:500px;">
-                <source src="${url}" type="audio/mpeg">
-                <source src="${url}" type="audio/wav">
-                <source src="${url}" type="audio/ogg">
-                متصفحك لا يدعم تشغيل الصوت.
-              </audio>
-            </div>`;
-        } 
-        else if (qData.type === 'image') {
-          // صورة
-          mediaHTML = `
-            <div style="text-align:center;margin-bottom:20px;">
-              <img src="${url}" alt="صورة السؤال" 
-                   style="max-width:100%;max-height:300px;border-radius:16px;object-fit:contain;"
-                   onerror="this.parentElement.innerHTML='<p style=color:red;>❌ فشل تحميل الصورة. تأكد من الرابط.</p>'">
-            </div>`;
-        } 
-        else if (qData.type === 'video') {
-          // فيديو - يوتيوب أو مباشر
-          const youtubeId = getYouTubeId(url);
-          
-          if (youtubeId) {
-            // رابط يوتيوب
-            mediaHTML = `
-              <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;max-width:100%;border-radius:16px;margin-bottom:20px;">
-                <iframe 
-                  src="https://www.youtube.com/embed/${youtubeId}?autoplay=0&rel=0" 
-                  style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:16px;"
-                  frameborder="0" 
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                  allowfullscreen>
-                </iframe>
-              </div>`;
-          } else {
-            // فيديو مباشر
-            mediaHTML = `
-              <div style="text-align:center;margin-bottom:20px;">
-                <video controls style="max-width:100%;max-height:300px;border-radius:16px;">
-                  <source src="${url}" type="video/mp4">
-                  <source src="${url}" type="video/webm">
-                  متصفحك لا يدعم تشغيل الفيديو.
-                </video>
-              </div>`;
-          }
-        }
-      }
-      
       content.innerHTML = `
         <h3>📝 سؤال ${currentQ + 1} من ${selectedQuestions.length}</h3>
-        ${mediaHTML}
         <div class="quiz-question">${escapeHTML(qData.question)}</div>
         <div class="quiz-options">
           ${shuffledIndices.map((origIdx, i) => `
@@ -1061,6 +1156,17 @@ window.startQuiz = async (sectionId) => {
       const finalScore = Math.round((score / selectedQuestions.length) * 100);
       const label = scoreLabel(finalScore);
       
+      // حفظ النتيجة محلياً
+      const allResults = JSON.parse(localStorage.getItem('quizResults') || '{}');
+      if (!allResults[sectionId]) allResults[sectionId] = [];
+      allResults[sectionId].push({
+        score: finalScore,
+        total: selectedQuestions.length,
+        timestamp: new Date().toISOString()
+      });
+      localStorage.setItem('quizResults', JSON.stringify(allResults));
+      
+      // محاولة حفظ في Firestore
       try {
         await setDoc(doc(collection(db, 'sections', sectionId, 'quizResults')), {
           score: finalScore,
@@ -1068,7 +1174,7 @@ window.startQuiz = async (sectionId) => {
           timestamp: new Date()
         });
       } catch (error) {
-        console.error('خطأ في حفظ النتيجة:', error);
+        console.log('تم حفظ النتيجة محلياً فقط');
       }
       
       content.innerHTML = `
@@ -1089,6 +1195,24 @@ window.startQuiz = async (sectionId) => {
     showQuestion();
   };
 
+  // أسئلة افتراضية للأقسام
+  function getDefaultQuestions(sectionId) {
+    const defaultQuestions = {
+      'sec1': [
+        { question: 'ما هو الحرف الأول في اللغة الإنجليزية؟', options: ['A', 'B', 'C', 'D'], answer: 0 },
+        { question: 'كم عدد حروف اللغة الإنجليزية؟', options: ['24', '25', '26', '27'], answer: 2 }
+      ],
+      'sec2': [
+        { question: 'ما معنى الرقم 5 بالإنجليزية؟', options: ['Four', 'Five', 'Six', 'Seven'], answer: 1 },
+        { question: 'ما هو الرقم 10 بالإنجليزية؟', options: ['Nine', 'Ten', 'Eleven', 'Twelve'], answer: 1 }
+      ]
+    };
+    return defaultQuestions[sectionId] || [
+      { question: 'سؤال تجريبي 1', options: ['إجابة 1', 'إجابة 2', 'إجابة 3', 'إجابة 4'], answer: 0 },
+      { question: 'سؤال تجريبي 2', options: ['إجابة 1', 'إجابة 2', 'إجابة 3', 'إجابة 4'], answer: 1 }
+    ];
+  }
+
   window.closeQuiz = () => {
     quizActive = false;
     window._currentQuestionData = null;
@@ -1103,38 +1227,53 @@ window.startQuiz = async (sectionId) => {
   async function loadPosts(searchTerm = '') {
     const container = document.getElementById('postsContainer');
     container.innerHTML = '<p class="no-posts">⏳ جاري التحميل...</p>';
-    const snap = await getDocs(query(collection(db, 'sections', currentSectionId, 'posts'), orderBy('createdAt', 'desc')));
+    
+    let posts = [];
+    
+    // محاولة جلب المنشورات من Firestore
+    try {
+      const snap = await getDocs(query(collection(db, 'sections', currentSectionId, 'posts'), orderBy('createdAt', 'desc')));
+      snap.forEach(docSnap => {
+        posts.push({ id: docSnap.id, ...docSnap.data() });
+      });
+    } catch (error) {
+      console.log('تعذر جلب المنشورات من Firestore، استخدام المنشورات المحلية');
+      const localPosts = JSON.parse(localStorage.getItem(`posts_${currentSectionId}`) || '[]');
+      posts = localPosts;
+    }
+    
     container.innerHTML = '';
-    if (snap.empty) { container.innerHTML = '<p class="no-posts">📭 لا توجد 🅰️ بعد.</p>'; return; }
+    if (posts.length === 0) { 
+      container.innerHTML = '<p class="no-posts">📭 لا توجد منشورات بعد.</p>'; 
+      return; 
+    }
+    
     let hasResults = false;
-    snap.forEach(docSnap => {
-      const p = docSnap.data();
-      if (searchTerm && !`${p.word1} ${p.word2} ${p.translation} ${p.example}`.toLowerCase().includes(searchTerm.toLowerCase())) return;
+    posts.forEach(p => {
+      if (searchTerm && !`${p.word1 || ''} ${p.word2 || ''} ${p.translation || ''} ${p.example || ''}`.toLowerCase().includes(searchTerm.toLowerCase())) return;
       hasResults = true;
-      const postId = docSnap.id;
+      const postId = p.id || Math.random().toString(36);
       const postDiv = document.createElement('div');
       postDiv.className = 'post';
       postDiv.setAttribute('data-post-id', postId);
       postDiv.style.fontSize = '18px';
     
-// بناء HTML للكلمة الثانية فقط إذا كانت موجودة وغير فارغة
-const word2HTML = p.word2 ? `
-          <span class="word-separator">/</span>
-          <div class="post-word">${escapeHTML(p.word2)} <button class="speak-btn" onclick="event.stopPropagation(); speakWord('${escapeQuotes(p.word2)}')">🔊</button></div>
-        ` : '';
+      const word2HTML = p.word2 ? `
+        <span class="word-separator">/</span>
+        <div class="post-word">${escapeHTML(p.word2)} <button class="speak-btn" onclick="event.stopPropagation(); speakWord('${escapeQuotes(p.word2)}')">🔊</button></div>
+      ` : '';
 
-// بناء HTML لزر النطق الخاص بالمثال فقط إذا كان المثال موجوداً
-const exampleSpeakBtn = p.example ? ` <button class="speak-btn" onclick="event.stopPropagation(); speakWord('${escapeQuotes(p.example)}')" style="width:40px;height:40px;font-size:1.1rem;">🔊</button>` : '';
+      const exampleSpeakBtn = p.example ? ` <button class="speak-btn" onclick="event.stopPropagation(); speakWord('${escapeQuotes(p.example)}')" style="width:40px;height:40px;font-size:1.1rem;">🔊</button>` : '';
 
-postDiv.innerHTML = `
+      postDiv.innerHTML = `
         <div class="post-words-row">
-          <div class="post-word">${escapeHTML(p.word1)} <button class="speak-btn" onclick="event.stopPropagation(); speakWord('${escapeQuotes(p.word1)}')">🔊</button></div>
+          <div class="post-word">${escapeHTML(p.word1 || '')} <button class="speak-btn" onclick="event.stopPropagation(); speakWord('${escapeQuotes(p.word1 || '')}')">🔊</button></div>
           ${word2HTML}
         </div>
-        <div class="post-translation">📖 ${escapeHTML(p.translation)}</div>
+        <div class="post-translation">📖 ${escapeHTML(p.translation || '')}</div>
         <div class="post-example-box">
-          <div class="post-example-text"><span>💬 ${escapeHTML(p.example)}</span>${exampleSpeakBtn}</div>
-          <div class="post-example-trans">🔁 ${escapeHTML(p.exampleTranslation)}</div>
+          <div class="post-example-text"><span>💬 ${escapeHTML(p.example || '')}</span>${exampleSpeakBtn}</div>
+          <div class="post-example-trans">🔁 ${escapeHTML(p.exampleTranslation || '')}</div>
         </div>
         <div class="post-actions">
           <div class="font-control">
@@ -1148,6 +1287,7 @@ postDiv.innerHTML = `
     });
     if (!hasResults && searchTerm) container.innerHTML = '<p class="no-posts">🔍 لا توجد نتائج.</p>';
   }
+
   window.speakWord = (text) => {
     if ('speechSynthesis' in window) {
       speechSynthesis.cancel();
@@ -1183,10 +1323,23 @@ postDiv.innerHTML = `
   };
 
   window.searchPosts = () => loadPosts(document.getElementById('searchInput').value);
-  window.logout = async () => { if (confirm('تسجيل الخروج؟')) { await signOut(auth); location.reload(); } };
-  document.getElementById('quizModal').addEventListener('click', function(e) { if (e.target === this) closeQuiz(); });
+  
+  window.logout = () => { 
+    if (confirm('تسجيل الخروج؟ سيتم حذف بياناتك المحلية.')) { 
+      localStorage.removeItem('appUserData');
+      localStorage.removeItem('quizResults');
+      location.reload(); 
+    } 
+  };
+  
+  document.getElementById('quizModal').addEventListener('click', function(e) { 
+    if (e.target === this) closeQuiz(); 
+  });
 
-  console.log('✅ حسين فاضل+حنين ابراهيم');
+  // بدء التطبيق
+  loadOrCreateUser();
+  
+  console.log('✅ تم التهيئة بنجاح - بدون تسجيل دخول');
 </script>
 </body>
 </html>
