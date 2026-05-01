@@ -726,7 +726,7 @@
             
             <button class="btn btn-primary btn-lg" id="quizBtn">📝 اختبار</button>
             
-            <input type="range" id="speakSpeed" min="0.5" max="2" step="0.1" value="0.85" oninput="updateSpeakSpeed()" title="سرعة النطق">🔈
+            <span style="margin-right:10px;">🐢 <input type="range" id="speakSpeed" min="0.5" max="2" step="0.1" value="0.85" style="width:100px;"> 🐇</span>
             <input type="text" class="search-box" placeholder="🔍بحث في القسم ..." id="searchInput" oninput="searchPosts()">
         </div>
         
@@ -1309,7 +1309,7 @@ window.updateSpeakSpeed = () => { if(window._currentRate!==undefined) window._cu
     if ('speechSynthesis' in window) {
       speechSynthesis.cancel();
       const u = new SpeechSynthesisUtterance(text);
-      u.rate = window._currentRate || 0.85;
+      u.rate = parseFloat(document.getElementById('speakSpeed')?.value) || 0.85;
       speechSynthesis.speak(u);
     }
   };
