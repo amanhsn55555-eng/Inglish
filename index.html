@@ -528,26 +528,25 @@
             border-color: var(--primary);
         }
 
-        .post-video-container {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            max-width: 50%;
-            border-radius: 16px;
-            border: 3px solid var(--border);
-            margin: 20px 0;
-        }
+.post-video-container {
+    position: relative;
+    padding-bottom: 30%; /* ارتفاع الحاوية 30% */
+    height: 0;
+    overflow: hidden;
+    max-width: 50%; /* عرض الحاوية 50% */
+    border-radius: 1px;
+    border: 3px solid var(--border);
+    margin: 0 auto; /* توسيط الحاوية */
+}
 
-        .post-video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 50%;
-            height: 30%;
-            border-radius: 16px;
-        }
-
+.post-video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* يملأ عرض الحاوية كامل */
+    height: 100%; /* يملأ ارتفاع الحاوية كامل */
+    border-radius: 16px;
+}
         .media-type-badge {
             display: inline-block;
             padding: 5px 12px;
@@ -1274,7 +1273,7 @@ const word2HTML = (p.word2 && p.word2.trim()) ? `
       if (p.mediaType === 'image' && p.mediaUrl) {
         mediaHTML = `
           <div class="post-media-container">
-            <span class="media-type-badge badge-image">🖼️ صورة</span>
+            <span class="media-type-badge badge-image"> </span>
             <br>
             <img class="post-image" src="${p.mediaUrl}" alt="صورة المنشور" 
                  onclick="openLightbox('${p.mediaUrl}')" 
@@ -1285,7 +1284,7 @@ const word2HTML = (p.word2 && p.word2.trim()) ? `
         if (videoId) {
           mediaHTML = `
             <div class="post-media-container">
-              <span class="media-type-badge badge-video">🎬 فيديو</span>
+              <span class="media-type-badge badge-video"> </span>
               <div class="post-video-container">
                 <iframe src="https://www.youtube.com/embed/${videoId}" frameborder="0" 
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
