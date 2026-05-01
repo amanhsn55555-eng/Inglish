@@ -1140,30 +1140,44 @@ window.startQuiz = async (sectionId) => {
     modal.classList.remove('hidden');
     document.body.style.overflow = 'hidden';
 
-    function showQuestion() {
-      if (currentQ >= selectedQuestions.length) {
-        return showResult();
+function showQuestion() {
+  if (currentQ >= selectedQuestions.length) {
+    return showResult();
+  }
+  
+  const qData = selectedQuestions[currentQ];
+  const shuffledIndices = shuffleArray([0, 1, 2, 3]);
+  const correctAnswer = shuffledIndices.indexOf(qData.answer);
+  
+  window._currentQuestionData = { qData, correctAnswer, total: selectedQuestions.length };
+  
+  let mediaHTML = '';
+  if (qData.mediaUrl && qData.type !== 'text') {
+    if (qData.type === 'audio') {
+      mediaHTML = `<audio controls style="width:100%;margin-bottom:15px;"><source src="${qData.mediaUrl}" type="audio/mpeg"></audio>`;
+    } else if (qData.type === 'image') {
+      mediaHTML = `<img class="quiz-media" src="${qData.mediaUrl}" alt="صورة السؤال" onerror="this.style.display='none'">`;
+    } else if (qData.type === 'video') {
+      const vId = getYouTubeId(qData.mediaUrl);
+      if (vId) {
+        mediaHTML = `<div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;max-width:100%;border-radius:16px;margin-bottom:20px;"><iframe src="https://www.youtube.com/embed/${vId}" style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:16px;" frameborder="0" allowfullscreen></iframe></div>`;
       }
-      
-      const qData = selectedQuestions[currentQ];
-      const shuffledIndices = shuffleArray([0, 1, 2, 3]);
-      const correctAnswer = shuffledIndices.indexOf(qData.answer);
-      
-      window._currentQuestionData = { qData, correctAnswer, total: selectedQuestions.length };
-      
-      content.innerHTML = `
-        <h3>📝 سؤال ${currentQ + 1} من ${selectedQuestions.length}</h3>
-        <div class="quiz-question">${escapeHTML(qData.question)}</div>
-        <div class="quiz-options">
-          ${shuffledIndices.map((origIdx, i) => `
-            <div class="quiz-option" onclick="selectQuizAnswer(${i})">
-              ${escapeHTML(qData.options[origIdx])}
-            </div>
-          `).join('')}
-        </div>
-      `;
     }
-
+  }
+  
+  content.innerHTML = `
+    <h3>📝 سؤال ${currentQ + 1} من ${selectedQuestions.length}</h3>
+    ${mediaHTML}
+    <div class="quiz-question">${escapeHTML(qData.question)}</div>
+    <div class="quiz-options">
+      ${shuffledIndices.map((origIdx, i) => `
+        <div class="quiz-option" onclick="selectQuizAnswer(${i})">
+          ${escapeHTML(qData.options[origIdx])}
+        </div>
+      `).join('')}
+    </div>
+  `;
+}
     window.selectQuizAnswer = (selectedIdx) => {
       if (!quizActive || !window._currentQuestionData) return;
       
